@@ -1,2 +1,2 @@
 # personal-website
-My personal website that contains general information about my experience, education, publications etc.
+This is just a simple HTML/CSS website with general curriculum vitae page and links to other social networks.
