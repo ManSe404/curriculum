@@ -1,2 +1,2 @@
-# personal-website
-This is just a simple HTML/CSS website with general curriculum vitae page and links to other social networks.
+# Webpage
+A simple webpage that summarizes my experience and links to various sources of information about me
