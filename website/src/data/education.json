@@ -1,0 +1,35 @@
+{
+  "degrees": [
+    {
+      "degree": "PhD Candidate, Sport Science",
+      "institution": "University of Belgrade",
+      "period": "2018 — Present",
+      "note": "Machine learning applications in exercise physiology and biomedical signal processing."
+    },
+    {
+      "degree": "Master's Degree, Sports Medicine",
+      "institution": "University of Novi Sad",
+      "period": "",
+      "note": ""
+    },
+    {
+      "degree": "Bachelor's Degree, Sport Science",
+      "institution": "University of Belgrade",
+      "period": "",
+      "note": ""
+    }
+  ],
+  "certifications": [
+    { "name": "Microsoft Certified: Azure AI Associate", "issuer": "Microsoft" },
+    { "name": "Microsoft Certified: Azure Data Fundamentals", "issuer": "Microsoft" },
+    { "name": "Lakehouse Fundamentals", "issuer": "Databricks Academy" },
+    { "name": "Generative AI Fundamentals", "issuer": "Databricks Academy" },
+    { "name": "COVID-19 Contact Tracing", "issuer": "Johns Hopkins University (Coursera, 2021)" }
+  ],
+  "memberships": [
+    "ACSM — American College of Sports Medicine",
+    "SEBM — Society for Experimental Biology and Medicine",
+    "Serbian Society for Prevention of Chronic Noncommunicable Diseases",
+    "Serbian Mountain Rescue Service"
+  ]
+}

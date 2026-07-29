@@ -1,0 +1,106 @@
+[
+  {
+    "id": "404-solutions",
+    "role": "Senior Machine Learning Engineer & Software Engineer",
+    "company": "404 Solutions",
+    "start": "2024-10",
+    "end": null,
+    "current": true,
+    "summary": "Design and operate multi-tenant AI systems for enterprise clients.",
+    "highlights": [
+      "Designed and operated multi-tenant AI systems for enterprise clients.",
+      "Delivered document intelligence solutions for automated extraction, classification, and summarization.",
+      "Built scalable AWS workflows using S3, Step Functions, Bedrock, and APIs for multiple organizations.",
+      "Deployed, monitored, and maintained production systems across distributed client environments."
+    ],
+    "stack": ["Python", "AI Agents", "FastAPI", "RAG", "AWS", "Bedrock"]
+  },
+  {
+    "id": "publicis-sapient",
+    "role": "Senior Data Scientist & Software Engineer in AI, R&D",
+    "company": "Publicis Sapient",
+    "start": "2023-10",
+    "end": "2024-09",
+    "current": false,
+    "summary": "Led AI systems from proof of concept through to production.",
+    "highlights": [
+      "Led development from proof of concept to production-grade systems.",
+      "Built enterprise RAG systems with retrieval optimization.",
+      "Delivered client-facing solutions and technical propositions."
+    ],
+    "stack": ["Python", "FastAPI", "LangChain", "Transformers", "PyTorch", "Docker", "Azure", "KubeFlow", "Redis", "Milvus", "Azure OpenAI"]
+  },
+  {
+    "id": "valcon",
+    "role": "Data Scientist & Developer → Senior Specialist",
+    "company": "Valcon Netherlands",
+    "start": "2022-05",
+    "end": "2023-10",
+    "current": false,
+    "summary": "Owned document processing microservices and led a team of six.",
+    "highlights": [
+      "Led and mentored a team of 6 engineers.",
+      "Owned design of document processing microservices.",
+      "Built data extraction and document classification services from scratch."
+    ],
+    "stack": ["Python", "Azure DevOps", "Azure Data Factory", "Synapse", "Data Lake", "Docker"]
+  },
+  {
+    "id": "optimal-systems",
+    "role": "Data Scientist",
+    "company": "Optimal Systems GmbH",
+    "start": "2021-10",
+    "end": "2022-04",
+    "current": false,
+    "summary": "Model evaluation and tuning for ML classification systems.",
+    "highlights": [
+      "Performed model evaluation and hyperparameter tuning for ML classification.",
+      "Produced data-driven insights and testing/validation for ML systems."
+    ],
+    "stack": ["Python", "Docker", "Machine Learning", "Azure"]
+  },
+  {
+    "id": "bioirc",
+    "role": "Researcher",
+    "company": "BioIRC — Bioengineering R&D Center",
+    "start": "2020-03",
+    "end": "2022-03",
+    "current": false,
+    "summary": "Built components for the SILICOFCM EU Horizon 2020 platform.",
+    "highlights": [
+      "Built components for the SILICOFCM EU Horizon 2020 computational platform.",
+      "Worked on ECG, CPET, and biomedical data processing.",
+      "Contributed to peer-reviewed publications."
+    ],
+    "stack": ["Python", "Statistical Analysis", "SPSS", "ECG", "CPET", "Biomedicine"]
+  },
+  {
+    "id": "university-belgrade",
+    "role": "PhD Researcher",
+    "company": "University of Belgrade",
+    "start": "2018-10",
+    "end": "2022-03",
+    "current": false,
+    "summary": "Machine learning applied to biomedical datasets.",
+    "highlights": [
+      "Developed research methodology and statistical frameworks.",
+      "Applied machine learning to biomedical datasets.",
+      "Published papers internationally."
+    ],
+    "stack": ["Python", "PyTorch", "SPSS", "Machine Learning", "Biostatistics"]
+  },
+  {
+    "id": "obliqus",
+    "role": "Sports Scientist",
+    "company": "Sport and Recreation Center Obliqus",
+    "start": "2014-10",
+    "end": "2018-07",
+    "current": false,
+    "summary": "Signal processing and performance analysis for athletes.",
+    "highlights": [
+      "Built algorithms for signal processing and data collection.",
+      "Performed functional testing and performance analysis for athletes."
+    ],
+    "stack": ["Python", "SPSS", "LabVIEW", "Data Analysis"]
+  }
+]

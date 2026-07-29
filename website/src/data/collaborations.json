@@ -1,0 +1,29 @@
+[
+  {
+    "id": "provectus",
+    "name": "Provectus Inc",
+    "via": "404 Solutions",
+    "kind": "Partner engagement",
+    "description": "Collaboration delivered through 404 Solutions.",
+    "tags": [],
+    "needsReview": true
+  },
+  {
+    "id": "g42",
+    "name": "G42",
+    "via": "404 Solutions",
+    "kind": "Partner engagement",
+    "description": "Collaboration delivered through 404 Solutions.",
+    "tags": [],
+    "needsReview": true
+  },
+  {
+    "id": "q-agency",
+    "name": "Q Agency",
+    "via": "404 Solutions",
+    "kind": "Partner engagement",
+    "description": "Collaboration across a range of projects, delivered through 404 Solutions.",
+    "tags": [],
+    "needsReview": true
+  }
+]

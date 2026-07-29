@@ -1,0 +1,157 @@
+---
+/**
+ * Drifting node-and-edge field behind the hero. Reads as a neural graph
+ * without being literal about it. Density scales with viewport area and the
+ * whole thing goes static under prefers-reduced-motion.
+ */
+---
+
+<canvas class="node-field" data-node-field aria-hidden="true"></canvas>
+
+<script>
+  const canvas = document.querySelector<HTMLCanvasElement>('[data-node-field]');
+  const ctx = canvas?.getContext('2d');
+
+  if (canvas && ctx) {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const LINK_DISTANCE = 132;
+
+    type Node = { x: number; y: number; vx: number; vy: number; r: number; hue: 'bio' | 'ai' };
+
+    let nodes: Node[] = [];
+    let width = 0;
+    let height = 0;
+    let raf = 0;
+    const pointer = { x: -9999, y: -9999 };
+
+    const build = () => {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      width = Math.max(1, rect.width);
+      height = Math.max(1, rect.height);
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // ~1 node per 13k px², clamped so phones stay cheap and desktops stay sparse.
+      const count = Math.round(
+        Math.min(72, Math.max(18, (width * height) / 13000)),
+      );
+
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: (Math.random() - 0.5) * 0.22,
+        r: Math.random() * 1.6 + 0.9,
+        hue: Math.random() > 0.68 ? 'ai' : 'bio',
+      }));
+    };
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      // Edges first so nodes sit on top of them.
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.hypot(dx, dy);
+          if (dist > LINK_DISTANCE) continue;
+
+          const strength = (1 - dist / LINK_DISTANCE) * 0.3;
+          ctx.strokeStyle = `rgba(45, 212, 191, ${strength})`;
+          ctx.lineWidth = 0.6;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+
+      for (const node of nodes) {
+        // Nodes near the cursor brighten, so the field feels responsive.
+        const near = Math.hypot(node.x - pointer.x, node.y - pointer.y);
+        const boost = near < 140 ? (1 - near / 140) * 0.55 : 0;
+        const base = node.hue === 'ai' ? [167, 139, 250] : [45, 212, 191];
+
+        ctx.fillStyle = `rgba(${base[0]}, ${base[1]}, ${base[2]}, ${0.42 + boost})`;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.r + boost * 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    };
+
+    const tick = () => {
+      for (const node of nodes) {
+        node.x += node.vx;
+        node.y += node.vy;
+
+        // Wrap rather than bounce — avoids nodes piling up along the edges.
+        if (node.x < -20) node.x = width + 20;
+        if (node.x > width + 20) node.x = -20;
+        if (node.y < -20) node.y = height + 20;
+        if (node.y > height + 20) node.y = -20;
+      }
+      render();
+      raf = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      cancelAnimationFrame(raf);
+      if (reduced.matches) {
+        render();
+        return;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    const stop = () => cancelAnimationFrame(raf);
+
+    build();
+    start();
+
+    window.addEventListener('resize', () => {
+      build();
+      start();
+    });
+
+    window.addEventListener(
+      'pointermove',
+      (event) => {
+        const rect = canvas.getBoundingClientRect();
+        pointer.x = event.clientX - rect.left;
+        pointer.y = event.clientY - rect.top;
+      },
+      { passive: true },
+    );
+
+    document.addEventListener('visibilitychange', () =>
+      document.hidden ? stop() : start(),
+    );
+
+    reduced.addEventListener('change', start);
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          entry.isIntersecting ? start() : stop();
+        }
+      }).observe(canvas);
+    }
+  }
+</script>
+
+<style>
+  .node-field {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 78% 78% at 50% 45%, #000 35%, transparent 76%);
+    -webkit-mask-image: radial-gradient(ellipse 78% 78% at 50% 45%, #000 35%, transparent 76%);
+  }
+</style>

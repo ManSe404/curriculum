@@ -1,0 +1,250 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Collaborations from '../components/Collaborations.astro';
+import Timeline from '../components/Timeline.astro';
+import SkillGrid from '../components/SkillGrid.astro';
+import Contact from '../components/Contact.astro';
+import education from '../data/education.json';
+import { withBase } from '../lib/url';
+
+const projects = await getCollection('projects');
+const byOrder = (a: typeof projects[number], b: typeof projects[number]) =>
+  a.data.order - b.data.order;
+
+const featured = projects.filter((p) => p.data.featured).sort(byOrder);
+const rest = projects.filter((p) => !p.data.featured).sort(byOrder);
+
+const publications = await getCollection('publications');
+const recent = publications
+  .map((entry) => entry.data)
+  .sort((a, b) => b.year - a.year)
+  .slice(0, 3);
+---
+
+<Base>
+  <Hero />
+
+  <Section
+    id="work"
+    eyebrow="Selected work"
+    title="Systems, not demos."
+    lede="Production AI and data platforms delivered for enterprise clients — each one taken from problem statement through to something running, monitored, and maintained."
+  >
+    <div class="featured-grid">
+      {featured.map((project) => (
+        <ProjectCard project={project} featured />
+      ))}
+    </div>
+
+    <div class="more-grid">
+      {rest.slice(0, 4).map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+
+    <div class="section-cta" data-reveal>
+      <a class="btn btn-ghost" href={withBase('/projects')}>
+        All {projects.length} projects
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </Section>
+
+  <Section
+    id="collaborations"
+    eyebrow="Collaborations"
+    title="Who I build with."
+    lede="Engagements delivered alongside partner organisations, currently through 404 Solutions."
+  >
+    <Collaborations />
+  </Section>
+
+  <Section
+    id="journey"
+    eyebrow="Career"
+    title="Ten years, one throughline."
+    lede="From biomedical signal processing to enterprise AI delivery — the domain changed, the discipline of turning messy data into something dependable did not."
+  >
+    <Timeline />
+  </Section>
+
+  <Section
+    id="research"
+    eyebrow="Research"
+    title="Published, cited, applied."
+    lede="Peer-reviewed work in computational cardiology and exercise physiology, with machine learning as the through-line."
+  >
+    <ul class="pub-list">
+      {recent.map((pub, index) => (
+        <li class="pub card" data-reveal style={`--reveal-delay:${index * 70}ms`}>
+          <span class="pub-year mono">{pub.year}</span>
+          <div class="pub-body">
+            <h3 class="pub-title">{pub.title}</h3>
+            <p class="pub-venue">{pub.venue} · <span class="text-dim">{pub.type}</span></p>
+          </div>
+          <span class="chip chip-ai">{pub.topic}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="section-cta" data-reveal>
+      <a class="btn btn-ghost" href={withBase('/research')}>
+        Full research profile
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </Section>
+
+  <Section
+    id="stack"
+    eyebrow="Toolkit"
+    title="What I build with."
+    lede="The stack behind the systems above — weighted toward Python, cloud-native services, and the retrieval infrastructure that generative AI actually runs on."
+  >
+    <SkillGrid />
+
+    <div class="edu-grid">
+      <div class="card" data-reveal>
+        <h3 class="edu-heading">Education</h3>
+        <ul class="edu-list">
+          {education.degrees.map((degree) => (
+            <li>
+              <span class="edu-degree">{degree.degree}</span>
+              <span class="edu-inst mono">
+                {degree.institution}{degree.period && ` · ${degree.period}`}
+              </span>
+              {degree.note && <span class="edu-note">{degree.note}</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="card" data-reveal style="--reveal-delay:80ms">
+        <h3 class="edu-heading">Certifications</h3>
+        <ul class="edu-list">
+          {education.certifications.map((cert) => (
+            <li>
+              <span class="edu-degree">{cert.name}</span>
+              <span class="edu-inst mono">{cert.issuer}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <Contact />
+</Base>
+
+<style>
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.15rem;
+  }
+
+  .more-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.15rem;
+    margin-top: 1.15rem;
+  }
+
+  .section-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.25rem;
+  }
+
+  /* --- Publications preview --------------------------------------------- */
+
+  .pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .pub {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .pub-year {
+    font-size: 1.15rem;
+    color: var(--bio);
+  }
+
+  .pub-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .pub-venue {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-top: 0.2rem;
+  }
+
+  /* --- Education / certifications --------------------------------------- */
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.15rem;
+    margin-top: 1.15rem;
+  }
+
+  .edu-heading {
+    font-size: 0.98rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .edu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.05rem;
+  }
+
+  .edu-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .edu-degree {
+    font-size: 0.94rem;
+    font-weight: 500;
+  }
+
+  .edu-inst {
+    font-size: 0.76rem;
+    color: var(--bio);
+  }
+
+  .edu-note {
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    margin-top: 0.2rem;
+  }
+
+  @media (max-width: 620px) {
+    .pub {
+      grid-template-columns: auto 1fr;
+      row-gap: 0.75rem;
+    }
+
+    .pub :global(.chip) {
+      grid-column: 2;
+      justify-self: start;
+    }
+  }
+</style>

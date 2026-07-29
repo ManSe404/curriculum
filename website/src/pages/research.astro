@@ -1,0 +1,411 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import profile from '../data/profile.json';
+import education from '../data/education.json';
+
+const publications = (await getCollection('publications'))
+  .map((entry) => entry.data)
+  .sort((a, b) => b.year - a.year || a.title.localeCompare(b.title));
+
+// Publications per year, oldest → newest, for the activity bars.
+const years = [...new Set(publications.map((p) => p.year))].sort((a, b) => a - b);
+const perYear = years.map((year) => ({
+  year,
+  count: publications.filter((p) => p.year === year).length,
+}));
+const peak = Math.max(...perYear.map((bucket) => bucket.count), 1);
+
+// Research areas with the number of works behind each, busiest first.
+const topics = [...new Set(publications.map((p) => p.topic))]
+  .map((topic) => ({
+    topic,
+    count: publications.filter((p) => p.topic === topic).length,
+  }))
+  .sort((a, b) => b.count - a.count || a.topic.localeCompare(b.topic));
+
+// Everything below is derived from publications.csv so the numbers can never
+// drift from the list underneath them.
+const totalCitations = publications.reduce((sum, p) => sum + p.citations, 0);
+const firstAuthorCount = publications.filter((p) => p.role === 'First author').length;
+
+// h-index: the largest h where h papers each have >= h citations.
+const descending = [...publications].map((p) => p.citations).sort((a, b) => b - a);
+const hIndex = descending.reduce(
+  (h, citations, i) => (citations >= i + 1 ? i + 1 : h),
+  0,
+);
+
+---
+
+<Base
+  title="Research — Stefan Seman"
+  description="Peer-reviewed research in computational cardiology, exercise physiology, and machine learning for biomedical data."
+>
+  <section class="page-head section">
+    <div class="wrap">
+      <p class="eyebrow">Research profile</p>
+      <h1 class="page-title">Research</h1>
+      <p class="page-lede">
+        Peer-reviewed work at the intersection of machine learning and biomedicine —
+        computational cardiology, exercise physiology, and biomedical signal processing,
+        carried out alongside a PhD at the University of Belgrade.
+      </p>
+
+      <div class="research-stats">
+        <div class="rstat">
+          <span class="rstat-value mono">{publications.length}</span>
+          <span class="rstat-label">Peer-reviewed works</span>
+        </div>
+        <div class="rstat">
+          <span class="rstat-value mono">{totalCitations}+</span>
+          <span class="rstat-label">Citations</span>
+        </div>
+        <div class="rstat">
+          <span class="rstat-value mono">{hIndex}</span>
+          <span class="rstat-label">h-index</span>
+        </div>
+        <div class="rstat">
+          <span class="rstat-value mono">{firstAuthorCount}</span>
+          <span class="rstat-label">As first author</span>
+        </div>
+      </div>
+
+      <div class="profile-links">
+        <a class="btn btn-ghost" href={profile.links.scholar} target="_blank" rel="noopener noreferrer">
+          Google Scholar <span aria-hidden="true">↗</span>
+        </a>
+        <a class="btn btn-ghost" href={profile.links.researchgate} target="_blank" rel="noopener noreferrer">
+          ResearchGate <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap research-grid">
+      <div class="research-main">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Selected publications</p>
+          <h2>Peer-reviewed output.</h2>
+          <p>
+            A selection from the full record — the complete list, with citation counts,
+            lives on Google Scholar.
+          </p>
+        </header>
+
+        <ul class="pub-list">
+          {publications.map((pub, index) => (
+            <li class="pub card" data-reveal style={`--reveal-delay:${index * 60}ms`}>
+              <div class="pub-head">
+                <span class="pub-year mono">{pub.year}</span>
+                <div class="pub-tags">
+                  {pub.role === 'First author' && (
+                    <span class="chip chip-bio">First author</span>
+                  )}
+                  <span class="chip chip-ai">{pub.topic}</span>
+                </div>
+              </div>
+
+              <h3 class="pub-title">
+                {pub.url ? (
+                  <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.title}</a>
+                ) : (
+                  pub.title
+                )}
+              </h3>
+
+              <p class="pub-venue">
+                <span class="pub-journal">{pub.venue}</span>
+                <span class="text-dim"> · {pub.type}</span>
+                {pub.citations > 0 && (
+                  <span class="pub-cites mono">{pub.citations} citations</span>
+                )}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <aside class="research-aside">
+        <section class="card" data-reveal>
+          <h2 class="aside-title">Output by year</h2>
+          <ul class="year-bars">
+            {perYear.map((bucket) => (
+              <li class="year-bar">
+                <span class="year-label mono">{bucket.year}</span>
+                <span class="bar-track">
+                  <span
+                    class="bar-fill"
+                    style={`--fill:${(bucket.count / peak) * 100}%`}
+                  ></span>
+                </span>
+                <span class="year-count mono">{bucket.count}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="card" data-reveal style="--reveal-delay:70ms">
+          <h2 class="aside-title">Research areas</h2>
+          <ul class="theme-list">
+            {topics.map((entry) => (
+              <li>
+                {entry.topic}
+                <span class="theme-count mono">{entry.count}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="card" data-reveal style="--reveal-delay:140ms">
+          <h2 class="aside-title">Memberships</h2>
+          <ul class="theme-list">
+            {education.memberships.map((membership) => (
+              <li>{membership}</li>
+            ))}
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-head {
+    padding-bottom: 0;
+  }
+
+  .page-title {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    margin-block: 0.75rem 1rem;
+    background: linear-gradient(120deg, #ffffff 25%, var(--ai) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .page-lede {
+    color: var(--text-dim);
+    max-width: 64ch;
+    font-size: 1.03rem;
+  }
+
+  .research-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.75rem;
+    margin-top: 2.25rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .rstat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .rstat-value {
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+    color: var(--ai);
+    line-height: 1;
+    text-shadow: 0 0 24px var(--glow-ai);
+  }
+
+  .rstat-label {
+    font-size: 0.8rem;
+    color: var(--text-faint);
+  }
+
+  .profile-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+
+  /* --- Layout ------------------------------------------------------------ */
+
+  .research-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: start;
+  }
+
+  .research-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .aside-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 1.1rem;
+  }
+
+  /* --- Publication list -------------------------------------------------- */
+
+  .pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .pub {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .pub-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .pub-year {
+    font-size: 1.05rem;
+    color: var(--bio);
+  }
+
+  .pub-title {
+    font-size: 1.03rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .pub-title a {
+    transition: color 0.25s var(--ease);
+  }
+
+  .pub-title a:hover {
+    color: var(--bio);
+  }
+
+  .pub-venue {
+    font-size: 0.87rem;
+    color: var(--text-dim);
+  }
+
+  .pub-journal {
+    font-style: italic;
+  }
+
+  .pub-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: flex-end;
+  }
+
+  .pub-cites {
+    font-size: 0.74rem;
+    color: var(--bio);
+    margin-left: 0.65rem;
+    padding-left: 0.65rem;
+    border-left: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  /* --- Year bars --------------------------------------------------------- */
+
+  .year-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .year-bar {
+    display: grid;
+    grid-template-columns: 2.6rem 1fr 1.2rem;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .year-label,
+  .year-count {
+    font-size: 0.74rem;
+    color: var(--text-faint);
+  }
+
+  .year-count {
+    text-align: right;
+    color: var(--bio);
+  }
+
+  .bar-track {
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    display: block;
+    height: 100%;
+    width: var(--fill);
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--bio-dim), var(--bio));
+    box-shadow: 0 0 12px -2px var(--glow-bio);
+    transform-origin: left;
+    animation: grow 1.1s var(--ease) both;
+  }
+
+  @keyframes grow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  /* --- Themes / memberships ---------------------------------------------- */
+
+  .theme-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .theme-list li {
+    position: relative;
+    padding-left: 1.1rem;
+    font-size: 0.89rem;
+    color: var(--text-dim);
+  }
+
+  .theme-count {
+    float: right;
+    font-size: 0.74rem;
+    color: var(--text-faint);
+  }
+
+  .theme-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--ai);
+    box-shadow: 0 0 7px var(--glow-ai);
+  }
+
+  @media (max-width: 900px) {
+    .research-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .research-aside {
+      position: static;
+    }
+  }
+</style>

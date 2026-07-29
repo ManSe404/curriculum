@@ -1,0 +1,170 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const categories = ['All', ...new Set(projects.map((p) => p.data.category))];
+---
+
+<Base
+  title="Projects — Stefan Seman"
+  description="Production AI systems, data platforms, and research tooling built by Stefan Seman."
+>
+  <section class="page-head section">
+    <div class="wrap">
+      <p class="eyebrow">Portfolio</p>
+      <h1 class="page-title">Projects</h1>
+      <p class="page-lede">
+        {projects.length} systems across generative AI, document intelligence, data
+        engineering, and biomedical research — each one built to run in production,
+        not to demo well.
+      </p>
+
+      <div class="filters" role="group" aria-label="Filter projects by category">
+        {categories.map((category, index) => (
+          <button
+            class={`filter mono ${index === 0 ? 'is-active' : ''}`}
+            data-filter={category}
+            type="button"
+            aria-pressed={index === 0 ? 'true' : 'false'}
+          >
+            {category}
+            <span class="filter-count">
+              {category === 'All'
+                ? projects.length
+                : projects.filter((p) => p.data.category === category).length}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section projects-section">
+    <div class="wrap">
+      <div class="projects-grid" data-projects>
+        {projects.map((project) => (
+          <div class="project-slot" data-category={project.data.category}>
+            <ProjectCard project={project} featured={project.data.featured} />
+          </div>
+        ))}
+      </div>
+
+      <p class="empty mono" data-empty hidden>No projects in this category.</p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const slots = document.querySelectorAll<HTMLElement>('.project-slot');
+  const empty = document.querySelector<HTMLElement>('[data-empty]');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const selected = button.dataset.filter;
+
+      buttons.forEach((other) => {
+        const active = other === button;
+        other.classList.toggle('is-active', active);
+        other.setAttribute('aria-pressed', String(active));
+      });
+
+      let visible = 0;
+      slots.forEach((slot) => {
+        const match = selected === 'All' || slot.dataset.category === selected;
+        slot.hidden = !match;
+        if (match) visible++;
+      });
+
+      if (empty) empty.hidden = visible > 0;
+    });
+  });
+</script>
+
+<style>
+  .page-head {
+    padding-bottom: 0;
+  }
+
+  .page-title {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    margin-block: 0.75rem 1rem;
+    background: linear-gradient(120deg, #ffffff 25%, var(--bio) 85%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .page-lede {
+    color: var(--text-dim);
+    max-width: 62ch;
+    font-size: 1.03rem;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 2rem;
+  }
+
+  .filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.79rem;
+    letter-spacing: 0.04em;
+    padding: 0.42rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-dim);
+    transition: all 0.28s var(--ease);
+  }
+
+  .filter:hover {
+    color: var(--text);
+    border-color: var(--border-strong);
+  }
+
+  .filter.is-active {
+    color: var(--bio);
+    border-color: rgba(45, 212, 191, 0.5);
+    background: rgba(45, 212, 191, 0.09);
+    box-shadow: 0 0 20px -8px var(--glow-bio);
+  }
+
+  .filter-count {
+    font-size: 0.68rem;
+    color: var(--text-faint);
+  }
+
+  .filter.is-active .filter-count {
+    color: var(--bio);
+  }
+
+  .projects-section {
+    padding-top: clamp(2rem, 5vh, 3rem);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.15rem;
+  }
+
+  .project-slot[hidden] {
+    display: none;
+  }
+
+  .empty {
+    text-align: center;
+    color: var(--text-faint);
+    font-size: 0.88rem;
+    padding-block: 3rem;
+  }
+</style>

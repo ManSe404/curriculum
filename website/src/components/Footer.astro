@@ -1,0 +1,86 @@
+---
+import profile from '../data/profile.json';
+
+const year = new Date().getFullYear();
+
+const social = [
+  { label: 'LinkedIn', href: profile.links.linkedin },
+  { label: 'GitHub', href: profile.links.github },
+  { label: 'Google Scholar', href: profile.links.scholar },
+  { label: 'ResearchGate', href: profile.links.researchgate },
+];
+---
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="mono footer-name">{profile.name}</span>
+      <span class="footer-tag">{profile.headline}</span>
+    </div>
+
+    <ul class="footer-links">
+      {social.map((item) => (
+        <li>
+          <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="footer-meta mono">© {year} · {profile.location}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    margin-top: clamp(3rem, 8vh, 6rem);
+    padding-block: 2.75rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .footer-name {
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+
+  .footer-tag {
+    font-size: 0.82rem;
+    color: var(--text-faint);
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.35rem;
+  }
+
+  .footer-links a {
+    font-size: 0.87rem;
+    color: var(--text-dim);
+    transition: color 0.25s var(--ease);
+  }
+
+  .footer-links a:hover {
+    color: var(--bio);
+  }
+
+  .footer-meta {
+    font-size: 0.76rem;
+    color: var(--text-faint);
+  }
+</style>

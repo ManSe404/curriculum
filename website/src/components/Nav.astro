@@ -1,0 +1,259 @@
+---
+import profile from '../data/profile.json';
+import { withBase } from '../lib/url';
+
+const links = [
+  { label: 'Work', href: withBase('/#work') },
+  { label: 'Collaborations', href: withBase('/#collaborations') },
+  { label: 'Journey', href: withBase('/#journey') },
+  { label: 'Research', href: withBase('/research') },
+  { label: 'Stack', href: withBase('/#stack') },
+  { label: 'Contact', href: withBase('/#contact') },
+];
+
+const social = [
+  { label: 'in', title: 'LinkedIn', href: profile.links.linkedin },
+  { label: 'gh', title: 'GitHub', href: profile.links.github },
+  { label: 'gs', title: 'Google Scholar', href: profile.links.scholar },
+];
+---
+
+<header class="nav" data-nav>
+  <div class="nav-inner wrap">
+    <a class="brand" href={withBase('/')}>
+      <span class="brand-pulse" aria-hidden="true"></span>
+      <span class="brand-name">{profile.name}</span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-nav-toggle>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
+    <nav class="nav-menu" data-nav-menu>
+      <ul class="nav-links">
+        {links.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+      <ul class="nav-social">
+        {social.map((item) => (
+          <li>
+            <a href={item.href} target="_blank" rel="noopener noreferrer" title={item.title}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-nav-menu]');
+
+  // Solidify the bar once the hero has scrolled behind it.
+  if (nav) {
+    const onScroll = () => nav.classList.toggle('is-stuck', window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const open = menu.classList.toggle('is-open');
+      toggle.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+
+    // Any navigation closes the mobile drawer.
+    menu.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('a')) {
+        menu.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    transition: background 0.4s var(--ease), border-color 0.4s var(--ease),
+      backdrop-filter 0.4s var(--ease);
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav.is-stuck {
+    background: rgba(5, 7, 11, 0.82);
+    backdrop-filter: blur(14px);
+    border-bottom-color: var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: 1rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-size: 1.02rem;
+    flex-shrink: 0;
+  }
+
+  /* A slow heartbeat next to the name — the smallest possible nod to the
+     biosignal theme, present on every page. */
+  .brand-pulse {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bio);
+    box-shadow: 0 0 10px var(--glow-bio);
+    animation: heartbeat 2.4s var(--ease) infinite;
+  }
+
+  @keyframes heartbeat {
+    0%, 62%, 100% { transform: scale(1); opacity: 1; }
+    12% { transform: scale(1.75); opacity: 0.75; }
+    24% { transform: scale(1); opacity: 1; }
+    36% { transform: scale(1.4); opacity: 0.85; }
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.6rem;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    position: relative;
+    transition: color 0.25s var(--ease);
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 1px;
+    background: var(--bio);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s var(--ease);
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+  }
+
+  .nav-links a:hover::after {
+    transform: scaleX(1);
+  }
+
+  .nav-social {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .nav-social a {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    transition: all 0.28s var(--ease);
+  }
+
+  .nav-social a:hover {
+    color: var(--bio);
+    border-color: var(--bio);
+    box-shadow: 0 0 16px -4px var(--glow-bio);
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--text);
+    transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+  }
+
+  .nav-toggle.is-open span:first-child {
+    transform: translateY(3.25px) rotate(45deg);
+  }
+
+  .nav-toggle.is-open span:last-child {
+    transform: translateY(-3.25px) rotate(-45deg);
+  }
+
+  @media (max-width: 860px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-menu {
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.75rem var(--gutter) 2.25rem;
+      background: rgba(5, 7, 11, 0.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      clip-path: inset(0 0 100% 0);
+      opacity: 0;
+      pointer-events: none;
+      transition: clip-path 0.4s var(--ease), opacity 0.3s var(--ease);
+    }
+
+    .nav-menu.is-open {
+      clip-path: inset(0 0 0 0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-links {
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .nav-links a {
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+  }
+</style>

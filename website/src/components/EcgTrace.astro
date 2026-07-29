@@ -1,0 +1,190 @@
+---
+interface Props {
+  height?: number;
+  class?: string;
+}
+
+const { height = 130, class: className = '' } = Astro.props;
+---
+
+<div class={`ecg ${className}`} style={`--ecg-h:${height}px`}>
+  <canvas data-ecg aria-hidden="true"></canvas>
+  <span class="sr-only">Animated electrocardiogram trace</span>
+</div>
+
+<script>
+  const HEIGHT_FALLBACK = 130;
+
+  document.querySelectorAll<HTMLElement>('.ecg').forEach((host) => {
+    const canvas = host.querySelector<HTMLCanvasElement>('[data-ecg]');
+    const ctx = canvas?.getContext('2d');
+    if (!canvas || !ctx) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // Sample buffer holds one amplitude per device-independent pixel column.
+    let samples: number[] = [];
+    let width = 0;
+    let height = HEIGHT_FALLBACK;
+    let phase = 0;
+    let raf = 0;
+
+    /**
+     * One PQRST complex expressed as a sum of gaussians over a normalised
+     * beat cycle. Amplitudes are in [-1, 1] where +1 is the R spike.
+     */
+    const beat = (t: number): number => {
+      const g = (center: number, width: number, amp: number) =>
+        amp * Math.exp(-((t - center) ** 2) / (2 * width ** 2));
+
+      return (
+        g(0.14, 0.021, 0.13) +  // P wave
+        g(0.235, 0.007, -0.11) + // Q
+        g(0.26, 0.0075, 1) +     // R spike
+        g(0.288, 0.009, -0.24) + // S
+        g(0.44, 0.035, 0.26)     // T wave
+      );
+    };
+
+    const resize = () => {
+      const rect = host.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      width = Math.max(1, Math.floor(rect.width));
+      height = Math.max(1, Math.floor(rect.height)) || HEIGHT_FALLBACK;
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // Pre-fill so the trace occupies the full width on first paint rather
+      // than crawling in from the right.
+      samples = new Array(width);
+      for (let x = 0; x < width; x++) {
+        samples[x] = beat(((x / 190) % 1 + 1) % 1);
+      }
+      phase = (width / 190) % 1;
+    };
+
+    const render = () => {
+      const mid = height / 2;
+      const amp = height * 0.34;
+
+      ctx.clearRect(0, 0, width, height);
+
+      // Baseline
+      ctx.strokeStyle = 'rgba(45, 212, 191, 0.14)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, mid);
+      ctx.lineTo(width, mid);
+      ctx.stroke();
+
+      // Trace, drawn twice: a wide blurred pass for the glow, then a crisp pass.
+      const drawTrace = () => {
+        ctx.beginPath();
+        for (let x = 0; x < width; x++) {
+          const y = mid - samples[x] * amp;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      };
+
+      ctx.lineJoin = 'round';
+      ctx.lineCap = 'round';
+
+      ctx.strokeStyle = 'rgba(45, 212, 191, 0.30)';
+      ctx.lineWidth = 5;
+      ctx.filter = 'blur(6px)';
+      drawTrace();
+
+      ctx.filter = 'none';
+      ctx.strokeStyle = '#2dd4bf';
+      ctx.lineWidth = 1.7;
+      drawTrace();
+
+      // Leading dot at the right edge, where new signal enters.
+      const headY = mid - samples[width - 1] * amp;
+      ctx.fillStyle = '#5eead4';
+      ctx.shadowColor = '#2dd4bf';
+      ctx.shadowBlur = 14;
+      ctx.beginPath();
+      ctx.arc(width - 1, headY, 3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    };
+
+    const tick = () => {
+      // Scroll left by two columns per frame and synthesise the new samples.
+      for (let i = 0; i < 2; i++) {
+        samples.shift();
+        phase = (phase + 1 / 190) % 1;
+        samples.push(beat(phase));
+      }
+      render();
+      raf = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      cancelAnimationFrame(raf);
+      if (reduced.matches) {
+        render(); // static trace only
+        return;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    const stop = () => cancelAnimationFrame(raf);
+
+    resize();
+    start();
+
+    window.addEventListener('resize', () => {
+      resize();
+      start();
+    });
+
+    reduced.addEventListener('change', start);
+
+    // Don't burn frames while the tab is hidden or the trace is off-screen.
+    document.addEventListener('visibilitychange', () =>
+      document.hidden ? stop() : start(),
+    );
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          entry.isIntersecting ? start() : stop();
+        }
+      }).observe(host);
+    }
+  });
+</script>
+
+<style>
+  .ecg {
+    width: 100%;
+    height: var(--ecg-h, 130px);
+    position: relative;
+    /* Fade both ends so the trace reads as a window onto a continuous signal. */
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 92%, transparent);
+  }
+
+  .ecg canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+</style>

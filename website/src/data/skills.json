@@ -1,0 +1,42 @@
+[
+  {
+    "group": "Languages",
+    "icon": "code",
+    "items": ["Python", "SQL", "Bash", "LabVIEW"]
+  },
+  {
+    "group": "ML & Generative AI",
+    "icon": "brain",
+    "items": ["PyTorch", "Transformers", "LangChain", "LlamaIndex", "RAG", "AI Agents", "Fine-Tuning", "Embeddings"]
+  },
+  {
+    "group": "Backend & Services",
+    "icon": "server",
+    "items": ["FastAPI", "Flask", "REST APIs", "Docker", "PySpark"]
+  },
+  {
+    "group": "AWS",
+    "icon": "cloud",
+    "items": ["Lambda", "S3", "ECS", "EC2", "Step Functions", "Bedrock", "SAM"]
+  },
+  {
+    "group": "Azure",
+    "icon": "cloud",
+    "items": ["Data Factory", "Synapse", "DevOps", "Functions", "AI Search", "Azure OpenAI", "Data Lake", "Databricks"]
+  },
+  {
+    "group": "Data & Vector Stores",
+    "icon": "database",
+    "items": ["PostgreSQL", "DynamoDB", "Redis", "Snowflake", "Pinecone", "Milvus", "PgVector"]
+  },
+  {
+    "group": "Ops & Tooling",
+    "icon": "wrench",
+    "items": ["Git", "Jenkins", "Grafana", "KubeFlow", "Power BI"]
+  },
+  {
+    "group": "Research Methods",
+    "icon": "flask",
+    "items": ["Biostatistics", "SPSS", "ECG Analysis", "CPET Analysis", "In Silico Trials"]
+  }
+]
