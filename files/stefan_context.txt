@@ -1,0 +1,183 @@
+Stefan Seman - Reusable Context
+Updated from local repo sources on 2026-05-21
+Sources: files/CV Stefan Seman.pdf, index.html, projects.html
+
+IDENTITY
+Name: Stefan Seman
+Headline: ML Engineer | Data Scientist | PhD Researcher
+Website: https://manse404.github.io/webpage/
+Email: stefan.seman404@gmail.com
+Phone: +38162262131
+LinkedIn: https://www.linkedin.com/in/sseman/
+GitHub: https://github.com/ManSe404
+Google Scholar: https://scholar.google.com/citations?user=HlXUn7wAAAAJ&hl=en
+ResearchGate: https://www.researchgate.net/profile/Stefan-Seman
+
+SHORT BIO
+Stefan Seman is an ML Engineer, Data Scientist, and PhD Researcher focused on building production-ready AI systems. His background combines machine learning, generative AI, software engineering, cloud delivery, and biomedical research. He works across document intelligence, retrieval-augmented generation, enterprise AI systems, data platforms, and healthcare-related research.
+
+POSITIONING
+- Builds end-to-end AI and data systems, not just models.
+- Strong focus on LLMs, RAG systems, document intelligence, and cloud workflows.
+- Combines industry delivery experience with academic research and publication history.
+- Has overlap across enterprise software, data engineering, and biomedicine.
+
+CORE FOCUS
+LLMs, RAG systems, software development, document intelligence, generative AI, biomedical machine learning.
+
+TECHNICAL SKILLS
+Languages: Python, SQL, Bash, LabVIEW
+Frameworks/Libraries: FastAPI, Flask, PyTorch, PySpark, LangChain, LlamaIndex, Transformers
+AWS: Lambda, S3, ECS, EC2, Step Functions, Bedrock
+Azure: Data Factory, Synapse, Azure DevOps, Azure Functions, Azure Search, Azure OpenAI, Data Lake, Databricks
+Databases/Vector Stores: DynamoDB, PostgreSQL, Redis, Pinecone, Milvus, PgVector
+Tools: Docker, Git, Grafana, Jenkins
+
+PROFESSIONAL SUMMARY
+ML Engineer, Data Scientist, and PhD Researcher with a strong background in higher education and published research. Specializes in machine learning, AI, generative AI, and software development, with expertise bridging data science and biomedicine. Analytical thinker with a pragmatic problem-solving approach and strong communication skills.
+
+EXPERIENCE
+Oct 2024 - Present | Senior Machine Learning Engineer & Software Engineer | 404 Solutions
+- Designed and operated multi-tenant AI systems for enterprise clients.
+- Delivered document intelligence solutions for automated extraction, classification, and summarization.
+- Built scalable AWS workflows using S3, Step Functions, Bedrock, and APIs for multiple organizations.
+- Deployed, monitored, and maintained production systems across distributed client environments.
+- Stack: Python, AI Agents, FastAPI, RAG.
+
+Oct 2023 - Sept 2024 | Senior Data Scientist & Software Engineer in AI, R&D | Publicis Sapient
+- Led development from proof of concept to production-grade systems.
+- Built enterprise RAG systems with retrieval optimization.
+- Delivered client-facing solutions and technical propositions.
+- Stack: Python, FastAPI, LangChain, Transformers, PyTorch, Docker, Azure, KubeFlow, Redis, Milvus, AI Agents, Azure OpenAI.
+
+May 2022 - Oct 2023 | Data Scientist & Developer -> Senior Specialist | Valcon Netherlands
+- Led and mentored a team of 6 engineers.
+- Owned design of document processing microservices.
+- Built data extraction and document classification services from scratch.
+- Stack: Python, Azure DevOps, Azure Data Factory, Synapse, Data Lake, Docker.
+
+Oct 2021 - Apr 2022 | Data Scientist | Optimal Systems GmbH
+- Performed model evaluation and hyperparameter tuning for ML classification.
+- Produced data-driven insights and testing/validation for ML systems.
+- Stack: Python, Docker, Machine Learning, Azure.
+
+Mar 2020 - Mar 2022 | Researcher | BioIRC - Bioengineering R&D Center
+- Built components for the SILICOFCM EU Horizon 2020 computational platform.
+- Worked on ECG, CPET, and biomedical data processing.
+- Contributed to peer-reviewed publications.
+- Stack: Python, Statistical Analysis, SPSS, ECG, CPET, Biomedicine.
+
+Oct 2018 - Mar 2022 | PhD Researcher | University of Belgrade
+- Developed research methodology and statistical frameworks.
+- Applied machine learning to biomedical datasets.
+- Published papers internationally.
+- Stack: Python, PyTorch, SPSS, Machine Learning, Biostatistics.
+
+Oct 2014 - July 2018 | Sports Scientist | Sport and Recreation Center Obliqus
+- Built algorithms for signal processing and data collection.
+- Performed functional testing and performance analysis for athletes.
+- Stack: Python, SPSS, LabVIEW, Data Analysis.
+
+KEY PROJECTS
+1. AI-Powered Document Summarizer | Generative AI
+- Built a document summarization pipeline using RAG, LLMs, and NLP for unstructured corpora.
+- Focused on chunking, retrieval tuning, prompt templates, and evaluation loops.
+- Impact: faster review cycles, less manual synthesis, more consistent summaries.
+- Stack: Python, AWS, Snowflake, RAG, Docker, S3, Step Functions, AWS SAM, LangChain, LlamaIndex.
+
+2. AI-Code Copilot | Generative AI
+- Built an enterprise AI copilot for internal infrastructure and knowledge bases.
+- Designed the RAG architecture, data pipelines, and model tuning for context-aware assistance.
+- Focused on secure retrieval across internal code and docs, with access controls and response grounding.
+- Stack: Python, Redis, Snowflake, RAG, AI Agents, LangChain, Azure OpenAI, Azure DevOps, Grafana, Fine-Tuning, KubeFlow, Docker, PostgreSQL, Milvus.
+
+3. RiskFocus (RiskSummariser Enhancement) | Generative AI
+- Built a RiskFocus feature to improve risk assessment workflows.
+- Added multi-document data lineage, risk factor management by line of business, and knowledge-base-backed prompts.
+- Added Q&A workflows to support guided decision-making.
+- Stack: Python, LangChain, AWS Lambda, ECS, S3, AWS Bedrock, Step Functions, RAG.
+
+4. Document Chatbot | ML/AI
+- Built an enterprise chatbot with optimized ingestion pipelines and document retrieval.
+- Evaluated and fine-tuned LLMs to improve answer accuracy and consistency.
+- Impact: faster access to trusted answers and lower support burden.
+- Stack: Python, FastAPI, Azure Search, Azure Functions, Docker, Azure OpenAI, Azure Pipelines, Data Lake, Snowflake, RAG.
+
+5. Auto Market Data Platform | Data Engineering
+- Built a multi-source ingestion pipeline for auto market analytics.
+- Combined production database inputs with web-scraped data in a centralized data lake.
+- Processed and normalized data with Databricks and Python for downstream analytics.
+- Stack: Python, Azure, Docker, Data Lake, Snowflake, Databricks, Azure Data Factory, FastAPI.
+
+6. Large-Scale Document ETL Pipelines | Cloud / AWS
+- Built large-scale document ingestion and transformation pipelines on AWS.
+- Designed serverless workflows for load, parse, transform, and S3 delivery.
+- Impact: higher throughput, better reliability, lower operational overhead.
+- Stack: Python, AWS Lambda, Step Functions, DynamoDB, S3, Snowflake, AWS SAM, ECS, EC2.
+
+7. Document Data Extractor Service | Software Engineering
+- Built data extraction and document classification services from scratch.
+- Created deep learning algorithms for unstructured text.
+- Led a team of 6 engineers and delivered production-ready services.
+- Stack: Python, Azure Data Factory, Synapse, Snowflake, Docker, Flask, PyTorch, Embeddings, ETL, Data Lake.
+
+8. SILICOFCM - EU Horizon 2020 | Research
+- Worked on a computational platform for in silico clinical trials of familial cardiomyopathies.
+- Contributed ECG and CPET analysis, statistical modeling, and patient-specific 3D heart model work.
+- Supported research outputs, clinical insights, and personalized medicine use cases.
+- Reference: https://silicofcm.eu/
+- Stack: Python, PyTorch, Data Analysis, Biostatistics, ECG, CPET, In Silico Trials.
+
+9. Voice-Enabled Support Chatbot | Conversational AI
+- Built a voice support system for telephone-based customer interactions.
+- Covered speech-to-text, intent recognition, entity extraction, dialogue flow, and text-to-speech.
+- Designed for high availability and telephony integration.
+- Stack: Python, Docker, Azure LUIS, Azure Speech Services, Azure Bot Service, Telephony.
+
+10. Data Extraction Service | Data Engineering
+- Built an Azure-based extraction and transformation platform for analytics workflows.
+- Orchestrated ETL from raw ingestion through classification, embedding generation, and reporting outputs.
+- Integrated with Power BI for dashboards and self-service analytics.
+- Stack: Python, FastAPI, Azure Data Factory, Synapse, Data Lake, Power BI, ETL, Embeddings.
+
+11. Document Classification Service | Software Engineering
+- Built an end-to-end document processing service for extraction, classification, and structured storage.
+- Used containerized microservices on Azure for scalable intake and automated categorization.
+- Impact: lower manual tagging effort and better labeling consistency.
+- Stack: Python, Docker, Azure, Flask, REST API, ML Classification.
+
+RESEARCH PROFILE
+Themes: machine learning for biomedical datasets, exercise physiology, cardiovascular research, ECG and CPET analysis, computational cardiology.
+Publication profile: 10+ publications, 100+ citations.
+Selected publications:
+- A Machine Learning Approach to Gene Expression in Hypertrophic Cardiomyopathy, Pharmaceuticals (MDPI), 2024.
+- Ventilatory Efficiency Parameters Outperform Peak VO2 in Monitoring Therapy Effects in HCM, European Heart Journal, 2024.
+- Defining the Importance of Stress Reduction in Managing Cardiovascular Disease - The Role of Exercise, Progress in Cardiovascular Diseases, 2022.
+- Physical activity and exercise as an essential medical strategy for the COVID-19 pandemic and beyond, Experimental Biology and Medicine, 2021.
+
+EDUCATION
+- PhD Candidate, Sport Science, University of Belgrade, 2018 - Present. Focus: machine learning applications in exercise physiology and biomedical signal processing.
+- Master's Degree, Sports Medicine, University of Novi Sad.
+- Bachelor's Degree, Sport Science, University of Belgrade.
+
+CERTIFICATIONS
+- Microsoft Certified: Azure AI Associate
+- Microsoft Certified: Azure Data Fundamentals
+- Databricks Academy: Lakehouse Fundamentals
+- Databricks Academy: Generative AI Fundamentals
+- Johns Hopkins University: COVID-19 Contact Tracing (Coursera, 2021)
+
+MEMBERSHIPS
+- ACSM - American College of Sports Medicine
+- SEBM - Society for Experimental Biology and Medicine
+- Serbian Society for Prevention of Chronic Noncommunicable Diseases
+- Serbian Mountain Rescue Service
+
+LANGUAGES
+- Serbian (Native)
+- English (Fluent)
+
+USAGE NOTES
+Use this file as context for professional bios, portfolio copy, cover letters, speaker intros, application materials, networking messages, or project summaries.
+Emphasize: production-ready AI systems, enterprise document intelligence, RAG/LLM delivery, cloud-based ML and data engineering, research-backed engineering, and AI at the intersection of software and biomedicine.
+Do not invent employers, titles, certifications, dates, awards, patents, clinical qualifications, or degrees not listed here. If a detail is missing, ask before asserting it.

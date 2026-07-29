@@ -52,7 +52,7 @@
                 </div>
                 <div class="hero-stats">
                     <div class="hero-stat">
-                        <span class="stat-number count-up" data-target="11">0</span>
+                        <span class="stat-number count-up" data-target="13">0</span>
                         <span class="stat-label">Projects</span>
                     </div>
                     <div class="hero-stat">
@@ -83,20 +83,63 @@
             <p class="section-subtitle">Full list with expanded context and outcomes</p>
 
             <div class="projects-grid">
+                <div class="project-card reveal" id="project-enterprise-assistant">
+                    <div class="project-category">Generative AI</div>
+                    <h3>Multimodal Enterprise AI Assistant</h3>
+                    <p>Enterprise AI platform combining conversational chatbot, document intelligence, and voice transcription into a single assistant. Built to support knowledge retrieval, structured information extraction, and spoken interactions across business workflows.</p>
+                    <p>Delivered end-to-end as the ML/AI engineer — covering retrieval pipelines, document parsing and classification, ASR integration, and grounded response generation. Emphasis on reliability, evaluation, and clean handoffs between modalities.</p>
+                    <ul class="project-bullets">
+                        <li><strong>Scope:</strong> chatbot, document intelligence (extraction, classification, summarization), and voice transcription pipelines.</li>
+                        <li><strong>Architecture:</strong> agentic flow orchestrating retrieval, tool use, and routing across enterprise knowledge sources, with an ASR layer and structured output schemas — RAG is one tool among several rather than the whole pipeline.</li>
+                        <li><strong>Impact:</strong> unified assistant covering text, document, and voice inputs for enterprise users.</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">RAG</span>
+                        <span class="tag">LLMs</span>
+                        <span class="tag">ASR</span>
+                        <span class="tag">Document Intelligence</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Vector Search</span>
+                        <span class="tag">AI Agents</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" id="project-marketing-agent">
+                    <div class="project-category">Agentic AI</div>
+                    <h3>AI-Powered Marketing Agent Platform</h3>
+                    <p>Full-stack agentic platform for content marketing teams — automating research, content generation, and campaign workflows through coordinated AI agents. Built for a B2B client to streamline how marketers plan and produce content.</p>
+                    <p>Owned the backend, data layer, ML pipelines, and agent orchestration end-to-end. Frontend was scaffolded with AI assistance and integrated in-house. Focus on reliable agent flows, evaluation hooks, and a clean operator experience.</p>
+                    <ul class="project-bullets">
+                        <li><strong>Scope:</strong> multi-agent orchestration, content generation pipelines, data ingestion, and operator-facing UI.</li>
+                        <li><strong>Architecture:</strong> agent graph with tool calling and evaluation hooks; full-stack delivery (BE, data, ML by me, FE AI-assisted).</li>
+                        <li><strong>Impact:</strong> faster content cycles and a reusable agent framework the client can extend.</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">AI Agents</span>
+                        <span class="tag">LLMs</span>
+                        <span class="tag">RAG</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Full-Stack</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Vector Search</span>
+                    </div>
+                </div>
+
                 <div class="project-card reveal" id="project-summarizer">
                     <div class="project-category">Generative AI</div>
                     <h3>AI-Powered Document Summarizer</h3>
                     <p>As the ML/AI engineer, I developed the document summarization pipeline leveraging RAG, Large Language Models (LLMs), and NLP techniques for unstructured corpora. Focused on tuned chunking, retrieval, and prompt templates.</p>
                     <p>Highlights include traceable prompts, retrieval tuning, and evaluation loops to keep summaries concise and consistent across large document sets. Result: faster review cycles and clearer outputs for stakeholders.</p>
                     <ul class="project-bullets">
-                        <li>Scope: multi-source ingestion, semantic retrieval, and summarization pipeline.</li>
-                        <li>Quality: spot checks, prompt guardrails, and error analysis for drift.</li>
-                        <li>Impact: reduced manual synthesis and improved summary consistency.</li>
+                        <li><strong>Scope:</strong> multi-source ingestion, semantic retrieval, and summarization pipeline.</li>
+                        <li><strong>Quality:</strong> spot checks, prompt guardrails, and error analysis for drift.</li>
+                        <li><strong>Impact:</strong> reduced manual synthesis and improved summary consistency.</li>
                     </ul>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">AWS</span>
-                        <span class="tag">Snowflake</span>
                         <span class="tag">RAG</span>
                         <span class="tag">Docker</span>
                         <span class="tag">S3</span>
@@ -113,14 +156,13 @@
                     <p>Enterprise AI copilot built for internal infrastructure and knowledge bases. Designed the RAG architecture, data pipelines, and model tuning to deliver accurate, context-aware assistance.</p>
                     <p>Focused on secure retrieval over internal code/docs, access controls, and reliable preparation workflows. Result: reduced time spent searching documentation and improved developer throughput.</p>
                     <ul class="project-bullets">
-                        <li>Scope: code and docs retrieval with contextual grounding.</li>
-                        <li>Reliability: permission-aware access and response grounding.</li>
-                        <li>Impact: faster onboarding and issue triage for teams.</li>
+                        <li><strong>Scope:</strong> code and docs retrieval with contextual grounding.</li>
+                        <li><strong>Reliability:</strong> permission-aware access and response grounding.</li>
+                        <li><strong>Impact:</strong> faster onboarding and issue triage for teams.</li>
                     </ul>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">Redis</span>
-                        <span class="tag">Snowflake</span>
                         <span class="tag">RAG</span>
                         <span class="tag">AI Agents</span>
                         <span class="tag">LangChain</span>
@@ -141,9 +183,9 @@
                     <p>RiskFocus feature for the RiskSummariser application to strengthen risk assessment workflows, including multi-document data lineage and risk factor management across lines of business.</p>
                     <p>Implemented a generalized prompt strategy backed by an admin-managed knowledge base and added Q&A functionality to improve decision-making and engagement.</p>
                     <ul class="project-bullets">
-                        <li>Scope: integrate RiskFocus with a multi-document data lineage UI.</li>
-                        <li>Admin: manage risk factors by line of business and knowledge base content.</li>
-                        <li>Experience: Q&A workflows for guided user decisions.</li>
+                        <li><strong>Scope:</strong> integrate RiskFocus with a multi-document data lineage UI.</li>
+                        <li><strong>Admin:</strong> manage risk factors by line of business and knowledge base content.</li>
+                        <li><strong>Experience:</strong> Q&A workflows for guided user decisions.</li>
                     </ul>
                     <div class="project-tags">
                         <span class="tag">Python</span>
@@ -163,9 +205,9 @@
                     <p>Enterprise chatbot application with optimized data ingestion pipelines and document retrieval. Evaluated and fine-tuned LLMs to improve accuracy and answer consistency.</p>
                     <p>Emphasis on reliable ingestion, high-quality retrieval, and consistent responses for business users. Result: quicker access to trusted answers and reduced support burden.</p>
                     <ul class="project-bullets">
-                        <li>Scope: ingestion, indexing, retrieval ranking, and response flow.</li>
-                        <li>Quality: curated QA set for evaluation and regressions.</li>
-                        <li>Impact: fewer repeated questions and faster response times.</li>
+                        <li><strong>Scope:</strong> ingestion, indexing, retrieval ranking, and response flow.</li>
+                        <li><strong>Quality:</strong> curated QA set for evaluation and regressions.</li>
+                        <li><strong>Impact:</strong> fewer repeated questions and faster response times.</li>
                     </ul>
                     <div class="project-tags">
                         <span class="tag">Python</span>
@@ -176,7 +218,6 @@
                         <span class="tag">Azure OpenAI</span>
                         <span class="tag">Azure Pipelines</span>
                         <span class="tag">Data Lake</span>
-                        <span class="tag">Snowflake</span>
                         <span class="tag">RAG</span>
                     </div>
                 </div>
@@ -187,16 +228,15 @@
                     <p>Built a multi-source ingestion pipeline for auto market analytics, pulling from production databases and web scraping sources into a centralized data lake.</p>
                     <p>Processed and normalized data with Databricks and Python, then loaded curated datasets into analytics databases for downstream reporting.</p>
                     <ul class="project-bullets">
-                        <li>Scope: ingestion from databases and web scraping, staging in Data Lake, and curated loads for analytics.</li>
-                        <li>Architecture: Azure Data Factory orchestration with containerized Python/FastAPI services.</li>
-                        <li>Impact: analytics-ready datasets for market insights and performance tracking.</li>
+                        <li><strong>Scope:</strong> ingestion from databases and web scraping, staging in Data Lake, and curated loads for analytics.</li>
+                        <li><strong>Architecture:</strong> Azure Data Factory orchestration with containerized Python/FastAPI services.</li>
+                        <li><strong>Impact:</strong> analytics-ready datasets for market insights and performance tracking.</li>
                     </ul>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">Azure</span>
                         <span class="tag">Docker</span>
                         <span class="tag">Data Lake</span>
-                        <span class="tag">Snowflake</span>
                         <span class="tag">Databricks</span>
                         <span class="tag">Azure Data Factory</span>
                         <span class="tag">FastAPI</span>
@@ -209,9 +249,9 @@
                     <p>Large-scale document ingestion and transformation pipelines on AWS with serverless orchestration. Designed for high-volume, resilient processing.</p>
                     <p>Focused on document load, parse, transform, and load to S3 workflows. Result: higher throughput, more stable runs, and lower operational overhead.</p>
                     <ul class="project-bullets">
-                        <li>Scope: event-driven document ingestion, parsing, transformation, and S3 load workflows.</li>
-                        <li>Reliability: retries, monitoring, and failure isolation.</li>
-                        <li>Impact: reduced cost per run and faster delivery.</li>
+                        <li><strong>Scope:</strong> event-driven document ingestion, parsing, transformation, and S3 load workflows.</li>
+                        <li><strong>Reliability:</strong> retries, monitoring, and failure isolation.</li>
+                        <li><strong>Impact:</strong> reduced cost per run and faster delivery.</li>
                     </ul>
                     <div class="project-tags">
                         <span class="tag">Python</span>
@@ -219,7 +259,6 @@
                         <span class="tag">Step Functions</span>
                         <span class="tag">DynamoDB</span>
                         <span class="tag">S3</span>
-                        <span class="tag">Snowflake</span>
                         <span class="tag">AWS SAM</span>
                         <span class="tag">ECS</span>
                         <span class="tag">EC2</span>
@@ -232,15 +271,14 @@
                     <p>Built data extraction and document classification services from scratch. Created deep learning algorithms for unstructured text and led a team of 6 engineers.</p>
                     <p>Delivered production-ready services that automated document workflows and improved classification reliability. Result: reduced manual tagging effort and faster document intake.</p>
                     <ul class="project-bullets">
-                        <li>Scope: extraction and classification services with clear APIs.</li>
-                        <li>Ops: containerized deployment and batch processing.</li>
-                        <li>Impact: higher consistency and lower manual workload.</li>
+                        <li><strong>Scope:</strong> extraction and classification services with clear APIs.</li>
+                        <li><strong>Ops:</strong> containerized deployment and batch processing.</li>
+                        <li><strong>Impact:</strong> higher consistency and lower manual workload.</li>
                     </ul>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">Azure Data Factory</span>
                         <span class="tag">Synapse</span>
-                        <span class="tag">Snowflake</span>
                         <span class="tag">Docker</span>
                         <span class="tag">Flask</span>
                         <span class="tag">PyTorch</span>
@@ -250,15 +288,37 @@
                     </div>
                 </div>
 
+                <div class="project-card reveal" id="project-integration-middleware">
+                    <div class="project-category">Software Engineering</div>
+                    <h3>Enterprise Integration Middleware</h3>
+                    <p>FastAPI middleware that brokers between client-facing surfaces (an email add-in and an in-app sidecar) and a legacy enterprise booking system. Exposes a clean, typed API layer over the platform's internal services so client tools can manage quotes and bookings without integrating against the legacy system directly.</p>
+                    <p>Designed and built the API layer end-to-end — mapping the platform's internal, undocumented service API, then implementing the authentication flow, request/response schemas, and a per-resource service architecture with consistent error handling.</p>
+                    <ul class="project-bullets">
+                        <li><strong>Scope:</strong> authenticated login flow, quote/booking module create/read/update/list/search, notes, agents, service lines, and reference-data endpoints.</li>
+                        <li><strong>Architecture:</strong> layered FastAPI service — protocol client, frozen domain dataclasses, Pydantic DTOs, and per-resource service functions behind a composed router.</li>
+                        <li><strong>Impact:</strong> a stable, documented API surface (Swagger/OpenAPI) that decouples client tools from the underlying legacy system.</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">REST API</span>
+                        <span class="tag">Pydantic</span>
+                        <span class="tag">System Integration</span>
+                        <span class="tag">Middleware</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">OpenAPI</span>
+                    </div>
+                </div>
+
                 <div class="project-card reveal" id="project-silicofcm">
                     <div class="project-category">Research</div>
                     <h3>SILICOFCM - EU Horizon 2020</h3>
                     <p>Computational platform for in silico clinical trials of familial cardiomyopathies (FCMs), funded under EU Horizon 2020 grant agreement No. 777204. The multi-modular system models how sarcomeric protein mutations affect heart function and drug responses, integrating patient-specific data across genetic, biological, pharmacologic, and clinical dimensions.</p>
                     <p>Key contributions included ECG and CPET analysis, statistical modeling, and development of patient-specific 3D heart models. The platform aims to optimize treatment strategies while minimizing adverse effects and reducing reliance on animal and human clinical trials.</p>
                     <ul class="project-bullets">
-                        <li>Scope: ECG/CPET signal analysis, patient-specific cardiac modeling, disease progression tracking, and drug effectiveness assessment.</li>
-                        <li>Outputs: peer-reviewed publications, conference presentations, video tutorials, and clinical insights supporting personalized medicine.</li>
-                        <li>Impact: reproducible analysis pipelines enabling evidence-based treatment optimization for cardiomyopathy patients.</li>
+                        <li><strong>Scope:</strong> ECG/CPET signal analysis, patient-specific cardiac modeling, disease progression tracking, and drug effectiveness assessment.</li>
+                        <li><strong>Outputs:</strong> peer-reviewed publications, conference presentations, video tutorials, and clinical insights supporting personalized medicine.</li>
+                        <li><strong>Impact:</strong> reproducible analysis pipelines enabling evidence-based treatment optimization for cardiomyopathy patients.</li>
                     </ul>
                     <div class="project-tags">
                         <span class="tag">Python</span>
@@ -280,9 +340,9 @@
                     <p>End-to-end conversational AI system for telephone support with speech-to-text and text-to-speech capabilities. Built to handle customer inquiries, policy questions, and claims status through natural voice interactions.</p>
                     <p>The system transcribes caller speech in real-time, processes intent and entities using Azure LUIS, generates contextual responses, and synthesizes natural-sounding voice replies. Designed for high availability and seamless integration with existing telephony infrastructure.</p>
                     <ul class="project-bullets">
-                        <li>Scope: speech recognition, intent classification, entity extraction, dialogue management, and speech synthesis.</li>
-                        <li>Architecture: containerized microservices with Azure Cognitive Services (Speech, LUIS, Bot Service) and telephony integration.</li>
-                        <li>Impact: reduced call center wait times, 24/7 availability, and improved customer satisfaction for routine inquiries.</li>
+                        <li><strong>Scope:</strong> speech recognition, intent classification, entity extraction, dialogue management, and speech synthesis.</li>
+                        <li><strong>Architecture:</strong> containerized microservices with Azure Cognitive Services (Speech, LUIS, Bot Service) and telephony integration.</li>
+                        <li><strong>Impact:</strong> reduced call center wait times, 24/7 availability, and improved customer satisfaction for routine inquiries.</li>
                     </ul>
                     <div class="project-tags">
                         <span class="tag">Python</span>
@@ -300,9 +360,9 @@
                     <p>Comprehensive data extraction and transformation platform built on Azure. The pipeline orchestrates ETL workflows from raw data ingestion through classification, embedding generation, and analytics-ready outputs for business intelligence.</p>
                     <p>Designed to handle diverse data sources with automated pipelines that clean, classify, and enrich data before loading into Data Lake storage. Integrated with Power BI for real-time dashboards and reporting.</p>
                     <ul class="project-bullets">
-                        <li>Scope: ETL pipeline design, data classification, embedding generation, and BI integration.</li>
-                        <li>Architecture: Azure Data Factory orchestration with Data Lake storage and Power BI visualization layer.</li>
-                        <li>Impact: unified data platform enabling self-service analytics and faster insight delivery.</li>
+                        <li><strong>Scope:</strong> ETL pipeline design, data classification, embedding generation, and BI integration.</li>
+                        <li><strong>Architecture:</strong> Azure Data Factory orchestration with Data Lake storage and Power BI visualization layer.</li>
+                        <li><strong>Impact:</strong> unified data platform enabling self-service analytics and faster insight delivery.</li>
                     </ul>
                     <div class="project-tags">
                         <span class="tag">Python</span>
@@ -322,9 +382,9 @@
                     <p>End-to-end document processing service designed to extract, classify, and store relevant data from unstructured documents. Built containerized microservices architecture on Azure for scalable document intake and automated categorization.</p>
                     <p>The system ingests documents from multiple sources, applies ML-based classification models, and persists structured outputs to downstream storage. Result: streamlined document workflows with consistent labeling and reduced manual intervention.</p>
                     <ul class="project-bullets">
-                        <li>Scope: document ingestion, text extraction, ML classification, and structured storage.</li>
-                        <li>Architecture: containerized services with clear separation of extraction, classification, and persistence layers.</li>
-                        <li>Impact: automated document categorization reducing manual tagging and improving data consistency.</li>
+                        <li><strong>Scope:</strong> document ingestion, text extraction, ML classification, and structured storage.</li>
+                        <li><strong>Architecture:</strong> containerized services with clear separation of extraction, classification, and persistence layers.</li>
+                        <li><strong>Impact:</strong> automated document categorization reducing manual tagging and improving data consistency.</li>
                     </ul>
                     <div class="project-tags">
                         <span class="tag">Python</span>
