@@ -43,7 +43,10 @@ const collaborations = defineCollection({
   loader: file('src/data/collaborations.json'),
   schema: z.object({
     name: z.string(),
-    via: z.string(),
+    // Omitted when the engagement was direct rather than routed through an
+    // employer — nothing is asserted about the relationship by default.
+    via: z.string().optional(),
+    location: z.string().optional(),
     kind: z.string(),
     description: z.string(),
     tags: z.array(z.string()).default([]),

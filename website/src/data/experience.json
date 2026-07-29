@@ -1,13 +1,14 @@
 [
   {
     "id": "404-solutions",
-    "role": "Senior Machine Learning Engineer & Software Engineer",
+    "role": "Founder & Principal ML Engineer",
     "company": "404 Solutions",
     "start": "2024-10",
     "end": null,
     "current": true,
-    "summary": "Design and operate multi-tenant AI systems for enterprise clients.",
+    "summary": "My own consultancy — independent AI and software delivery for partner organisations.",
     "highlights": [
+      "Run an independent practice delivering AI systems for partner organisations across several countries.",
       "Designed and operated multi-tenant AI systems for enterprise clients.",
       "Delivered document intelligence solutions for automated extraction, classification, and summarization.",
       "Built scalable AWS workflows using S3, Step Functions, Bedrock, and APIs for multiple organizations.",

@@ -13,7 +13,11 @@ const collaborations = entries.map((entry) => entry.data);
         <span class="chip chip-bio">{item.kind}</span>
       </div>
 
-      <p class="collab-via mono">via {item.via}</p>
+      {(item.via || item.location) && (
+        <p class="collab-via mono">
+          {[item.via && `via ${item.via}`, item.location].filter(Boolean).join(' · ')}
+        </p>
+      )}
       <p class="collab-desc">{item.description}</p>
 
       {item.tags.length > 0 && (
@@ -30,7 +34,9 @@ const collaborations = entries.map((entry) => entry.data);
 <style>
   .collab-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    /* 3 columns at desktop width — keeps an odd count balanced (3 + 2) rather
+       than stranding a single card on its own row. */
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
     gap: 1.15rem;
   }
 

@@ -2,27 +2,45 @@
   {
     "id": "provectus",
     "name": "Provectus Inc",
-    "via": "404 Solutions",
-    "kind": "Partner engagement",
-    "description": "Document intelligence work delivered together — summarization and point-of-interest extraction, multi-document risk analysis, and the large-scale ingestion pipelines underneath both.",
+    "location": "United States",
+    "kind": "Delivery partner",
+    "description": "Document intelligence delivered together for a specialty insurance client — summarization and point-of-interest extraction, multi-document risk analysis, and the large-scale ingestion pipelines underneath both.",
     "tags": ["Document Intelligence", "Generative AI", "AWS"],
     "needsReview": false
   },
   {
-    "id": "g42",
-    "name": "G42",
-    "via": "404 Solutions",
-    "kind": "Partner engagement",
-    "description": "Collaboration delivered through 404 Solutions.",
-    "tags": [],
+    "id": "wisertech",
+    "name": "WiserTech",
+    "location": "Bulgaria",
+    "kind": "Delivery partner",
+    "description": "Machine learning engineering delivered for a UAE-based sovereign AI organisation.",
+    "tags": ["Machine Learning", "Generative AI"],
     "needsReview": true
   },
   {
     "id": "q-agency",
     "name": "Q Agency",
-    "via": "404 Solutions",
-    "kind": "Partner engagement",
-    "description": "Collaboration across a range of projects, delivered through 404 Solutions.",
+    "location": "Croatia",
+    "kind": "Delivery partner",
+    "description": "Built a marketing content manager for Q Agency, and delivered engineering work on a project for one of their enterprise clients.",
+    "tags": ["Software Engineering", "Content Systems"],
+    "needsReview": true
+  },
+  {
+    "id": "expertgroup",
+    "name": "ExpertGroup",
+    "location": "Serbia",
+    "kind": "Delivery partner",
+    "description": "Collaboration on delivery work.",
+    "tags": [],
+    "needsReview": true
+  },
+  {
+    "id": "exolvo",
+    "name": "Exolvo",
+    "location": "Serbia",
+    "kind": "Delivery partner",
+    "description": "Collaboration on delivery work.",
     "tags": [],
     "needsReview": true
   }
