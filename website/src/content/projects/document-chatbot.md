@@ -1,8 +1,10 @@
 ---
-title: Document Chatbot
+title: RAG Document Chatbot
 category: ML / AI
-summary: An enterprise chatbot with optimized ingestion and retrieval, tuned for answer accuracy and consistency.
+summary: An enterprise RAG chatbot with optimized ingestion and retrieval, tuned for answer accuracy and consistency.
 order: 4
+org: Publicis Sapient
+period: 2023 — 2024
 impact:
   - Faster access to trusted answers
   - Lower support burden on internal teams
@@ -19,7 +21,7 @@ stack:
   - RAG
 ---
 
-Built an enterprise document chatbot end to end: optimized ingestion pipelines feeding a
+Built an enterprise RAG chatbot end to end: optimized ingestion pipelines feeding a
 retrieval layer over the organisation's document estate, with LLM evaluation and
 fine-tuning work focused on answer accuracy and consistency rather than raw fluency.
 

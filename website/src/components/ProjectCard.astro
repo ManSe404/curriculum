@@ -8,7 +8,11 @@ interface Props {
 }
 
 const { project, featured = false } = Astro.props;
-const { title, category, summary, stack, impact, metrics } = project.data;
+const { title, category, summary, stack, impact, metrics, org, client } =
+  project.data;
+
+// "404 Solutions · with Provectus" — the partner only appears when there is one.
+const attribution = [org, client && `with ${client}`].filter(Boolean).join(' · ');
 
 // Show the leading stack items only; the full list lives on the detail page.
 const shownStack = stack.slice(0, featured ? 8 : 5);
@@ -28,6 +32,7 @@ const overflow = stack.length - shownStack.length;
   </div>
 
   <h3 class="project-title">{title}</h3>
+  {attribution && <p class="project-org mono">{attribution}</p>}
   <p class="project-summary">{summary}</p>
 
   {featured && impact.length > 0 && (
@@ -71,6 +76,13 @@ const overflow = stack.length - shownStack.length;
 
   .project-title {
     line-height: 1.25;
+  }
+
+  .project-org {
+    font-size: 0.73rem;
+    color: var(--bio);
+    letter-spacing: 0.04em;
+    margin-top: -0.45rem;
   }
 
   .is-featured .project-title {

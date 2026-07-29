@@ -12,7 +12,10 @@ const projects = defineCollection({
     featured: z.boolean().default(false),
     order: z.number().default(99),
     period: z.string().optional(),
+    // org = the employer the work was delivered under.
+    // client = the partner or end customer, where it can be named publicly.
     org: z.string().optional(),
+    client: z.string().optional(),
     impact: z.array(z.string()).default([]),
     stack: z.array(z.string()).default([]),
     metrics: z

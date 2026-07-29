@@ -4,9 +4,9 @@
     "name": "Provectus Inc",
     "via": "404 Solutions",
     "kind": "Partner engagement",
-    "description": "Collaboration delivered through 404 Solutions.",
-    "tags": [],
-    "needsReview": true
+    "description": "Document intelligence work delivered together — summarization and point-of-interest extraction, multi-document risk analysis, and the large-scale ingestion pipelines underneath both.",
+    "tags": ["Document Intelligence", "Generative AI", "AWS"],
+    "needsReview": false
   },
   {
     "id": "g42",

@@ -1,13 +1,16 @@
 ---
-title: RiskFocus — Risk Summariser Enhancement
+title: RiskFocus — Risk Summariser
 category: Generative AI
-summary: Multi-document data lineage and knowledge-base-backed prompting for risk assessment workflows, with guided Q&A for decision support.
+summary: Multi-document risk extraction that surfaces the connections between documents, with traceable lineage back to every source.
 featured: true
 order: 3
+org: 404 Solutions
+client: Provectus
+period: 2024 — Present
 impact:
+  - Connections drawn across documents, not just within them
+  - Traceable lineage from every finding back to its source
   - Risk factors managed per line of business
-  - Traceable lineage across multiple source documents
-  - Guided Q&A workflows supporting decision-making
 stack:
   - Python
   - LangChain
@@ -16,7 +19,6 @@ stack:
   - S3
   - AWS Bedrock
   - Step Functions
-  - RAG
 metrics:
   - label: Domain
     value: Risk assessment
@@ -26,16 +28,23 @@ metrics:
 
 ## The problem
 
-Risk assessment workflows depend on evidence spread across many documents. Summarising
-them is only half the job — assessors also need to know *where* each claim came from,
-and risk factors that matter for one line of business are noise for another.
+Risk rarely sits inside a single document. It emerges from how documents relate — an
+exposure named in one file, qualified in a second, contradicted by a third. Extracting
+each document in isolation misses exactly the thing an assessor needs, and a summary
+nobody can trace back to a source is a summary nobody can defend.
 
 ## The approach
 
-I built RiskFocus as an enhancement to an existing risk summariser:
+RiskFocus shares its foundations with the [document
+summarizer](/webpage/projects/ai-document-summarizer) but targets a different problem —
+risk extraction across a document set, and the relationships within it:
 
-- **Multi-document data lineage**, so every element of a summary traces back to the
-  source document it came from. Without this, assessors cannot defend a conclusion.
+- **Multi-document risk extraction**, identifying risk-relevant content across a whole
+  set rather than file by file.
+- **Connections between documents**, surfacing where they reinforce, qualify, or
+  contradict one another — the part that isn't visible from any single file.
+- **Data lineage**, so every element traces back to the document it came from. Without
+  this, an assessor cannot defend a conclusion.
 - **Risk factor management by line of business**, letting each business line define the
   factors relevant to it instead of sharing one flat taxonomy.
 - **Knowledge-base-backed prompts**, grounding generation in curated domain knowledge
@@ -48,6 +57,7 @@ Lambda plus ECS for the processing tiers.
 
 ## The outcome
 
-Assessors moved from reading generated summaries to working with them — able to follow
-any statement back to its source, tune the risk lens to their own line of business, and
-ask follow-up questions against the underlying evidence.
+Assessors moved from reading generated summaries to working with them — following any
+statement back to its source, seeing how the documents relate to each other, tuning the
+risk lens to their own line of business, and asking follow-up questions against the
+underlying evidence.

@@ -14,7 +14,7 @@ export const getStaticPaths = (async () => {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, category, summary, stack, impact, metrics, org, period, link } =
+const { title, category, summary, stack, impact, metrics, org, client, period, link } =
   project.data;
 
 // Neighbouring projects for the prev/next footer.
@@ -36,7 +36,8 @@ const next = index < all.length - 1 ? all[index + 1] : null;
 
         <div class="detail-meta">
           <span class="chip chip-ai">{category}</span>
-          {org && <span class="chip">{org}</span>}
+          {org && <span class="chip chip-bio">{org}</span>}
+          {client && <span class="chip chip-bio">with {client}</span>}
           {period && <span class="chip">{period}</span>}
         </div>
 
