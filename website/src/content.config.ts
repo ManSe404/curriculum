@@ -33,6 +33,9 @@ const experience = defineCollection({
     start: z.string(),
     end: z.string().nullable(),
     current: z.boolean().default(false),
+    // Set when a date is a placeholder awaiting confirmation. Timeline.astro
+    // warns on every build while any entry still has this set.
+    dateUnconfirmed: z.boolean().default(false),
     summary: z.string(),
     highlights: z.array(z.string()).default([]),
     stack: z.array(z.string()).default([]),

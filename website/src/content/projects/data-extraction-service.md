@@ -2,7 +2,7 @@
 title: Data Extraction Service
 category: Data Engineering
 summary: An Azure extraction and transformation platform orchestrating ETL from raw ingestion through classification, embeddings, and reporting.
-order: 13
+order: 16
 org: Optimal Systems GmbH
 period: 2021 — 2022
 impact:

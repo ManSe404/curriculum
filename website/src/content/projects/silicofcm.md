@@ -2,7 +2,7 @@
 title: SILICOFCM — EU Horizon 2020
 category: Research
 summary: A computational platform for in silico clinical trials of familial cardiomyopathies, combining ECG and CPET analysis with patient-specific 3D heart modelling.
-order: 11
+order: 14
 org: BioIRC — Bioengineering R&D Center
 period: 2020 — 2022
 link: https://silicofcm.eu/

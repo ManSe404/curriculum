@@ -27,15 +27,6 @@
     "needsReview": true
   },
   {
-    "id": "expertgroup",
-    "name": "ExpertGroup",
-    "location": "Serbia",
-    "kind": "Delivery partner",
-    "description": "Collaboration on delivery work.",
-    "tags": [],
-    "needsReview": true
-  },
-  {
     "id": "exolvo",
     "name": "Exolvo",
     "location": "Serbia",

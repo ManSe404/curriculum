@@ -1,8 +1,8 @@
 {
   "name": "Stefan Seman",
-  "headline": "ML Engineer · Data Scientist · PhD Researcher",
+  "headline": "Head of AI · ML Engineer · PhD Researcher",
   "tagline": "Production AI systems at the intersection of software and biomedicine.",
-  "summary": "I build end-to-end AI and data systems — not just models. My work spans LLM and RAG architectures, enterprise document intelligence, and cloud-native data platforms, grounded in a decade of biomedical research and peer-reviewed publication.",
+  "summary": "I lead AI teams and still build the systems myself. My work spans LLM and RAG architectures, agentic applications, enterprise document intelligence, and cloud-native data platforms — grounded in a decade of biomedical research and peer-reviewed publication.",
   "location": "Belgrade, Serbia",
   "email": "stefan.seman404@gmail.com",
   "phone": "+38162262131",
@@ -17,7 +17,7 @@
     { "label": "Years in ML & data", "value": 10, "suffix": "+" },
     { "label": "Peer-reviewed works", "value": 12, "suffix": "" },
     { "label": "Citations", "value": 77, "suffix": "+" },
-    { "label": "Production systems", "value": 11, "suffix": "" }
+    { "label": "Systems delivered", "value": 17, "suffix": "" }
   ],
   "languages": [
     { "name": "Serbian", "level": "Native" },

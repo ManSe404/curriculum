@@ -15,6 +15,14 @@ const formatMonth = (value: string | null, current: boolean) => {
 const roles = entries
   .map((entry) => entry.data)
   .sort((a, b) => b.start.localeCompare(a.start));
+
+// Loud during dev and CI builds so a placeholder date cannot quietly ship.
+for (const role of roles.filter((r) => r.dateUnconfirmed)) {
+  console.warn(
+    `[timeline] UNCONFIRMED DATE: "${role.role} @ ${role.company}" starts ${role.start} ` +
+      `- placeholder, confirm before publishing (src/data/experience.json)`,
+  );
+}
 ---
 
 <ol class="timeline">

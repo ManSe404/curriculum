@@ -1,5 +1,25 @@
 [
   {
+    "id": "expertgroup",
+    "role": "Head of AI",
+    "company": "ExpertGroup",
+    "start": "2025-01",
+    "dateUnconfirmed": true,
+    "end": null,
+    "current": true,
+    "summary": "Principal leading the AI and Data team, reporting directly to the CEO.",
+    "highlights": [
+      "Lead the AI and Data team — organisation, people management, hiring and mentoring.",
+      "Own AI initiatives end to end: originating projects, presales, architecture, and engineering standards.",
+      "Stay hands-on — building demo pitches, proofs of concept and MVPs alongside the team.",
+      "Set technical direction and make delivery decisions across the AI portfolio.",
+      "Delivered RAG chatbots for public administration and other public-sector work.",
+      "Built gradient-boosted time series models for supply chain and sales forecasting.",
+      "Architecting crowd movement prediction and venue analytics for large-scale events."
+    ],
+    "stack": ["Python", "LangChain", "Azure Fabric", "Docker", "XGBoost", "RAG", "Computer Vision"]
+  },
+  {
     "id": "404-solutions",
     "role": "Founder & Principal ML Engineer",
     "company": "404 Solutions",

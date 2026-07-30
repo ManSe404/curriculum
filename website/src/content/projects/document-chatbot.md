@@ -2,7 +2,7 @@
 title: RAG Document Chatbot
 category: ML / AI
 summary: An enterprise RAG chatbot with optimized ingestion and retrieval, tuned for answer accuracy and consistency.
-order: 5
+order: 8
 org: Publicis Sapient
 period: 2023 — 2024
 impact:

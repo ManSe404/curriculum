@@ -2,7 +2,7 @@
 title: Auto Market Data Platform
 category: Data Engineering
 summary: Multi-source ingestion combining production databases and web-scraped data into a centralized lake for market analytics.
-order: 6
+order: 9
 org: Publicis Sapient
 period: 2023 — 2024
 impact:

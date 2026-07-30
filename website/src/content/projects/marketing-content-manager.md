@@ -2,7 +2,7 @@
 title: Marketing Content Manager
 category: Software Engineering
 summary: A content management system for marketing operations, built for Q Agency.
-order: 9
+order: 12
 org: 404 Solutions
 client: Q Agency
 impact:
