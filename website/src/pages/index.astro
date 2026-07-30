@@ -143,7 +143,9 @@ const recent = publications
 <style>
   .featured-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Two columns at desktop width: there are four featured case studies, and
+       a 2x2 block gives each one room without leaving an orphan on row two. */
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
     gap: 1.15rem;
   }
 

@@ -2,7 +2,7 @@
 title: Document Classification Service
 category: Software Engineering
 summary: Containerized microservices on Azure handling document extraction, automated categorization, and structured storage.
-order: 11
+order: 14
 org: Valcon Netherlands
 period: 2022 — 2023
 impact:
