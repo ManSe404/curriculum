@@ -1,8 +1,8 @@
 # 👋 Hi, I'm Stefan Seman
 
-### 🚀 ML/AI Engineer | Data Scientist | Software Engineer
+### 🚀 Head of AI | ML Engineer | PhD Researcher
 
-Welcome to my personal portfolio website repository! I'm passionate about building intelligent systems at the intersection of **Machine Learning**, **Cloud Engineering**, and **Healthcare Research**.
+Welcome to my personal portfolio website repository! I lead an AI and Data practice and still build the systems myself — working at the intersection of **Machine Learning**, **Cloud Engineering**, and **Healthcare Research**.
 
 🌐 **[Visit My Portfolio →](https://manse404.github.io/webpage/)**
 
@@ -11,6 +11,7 @@ Welcome to my personal portfolio website repository! I'm passionate about buildi
 ## 🎯 What I Do
 
 🤖 **Generative AI & LLMs** — Building RAG pipelines, AI copilots, and document intelligence systems
+🕸️ **Agentic AI** — Orchestration graphs coordinating multiple agents over retrieval and tools
 ☁️ **Cloud Architecture** — Designing scalable solutions on AWS and Azure
 📊 **Data Engineering** — Creating ETL pipelines and analytics platforms
 🏥 **Healthcare AI** — Contributing to research in computational cardiology
@@ -28,6 +29,7 @@ Welcome to my personal portfolio website repository! I'm passionate about buildi
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)
 ![LangChain](https://img.shields.io/badge/LangChain-121212?style=flat)
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
+![Qdrant](https://img.shields.io/badge/Qdrant-DC244C?style=flat&logo=qdrant&logoColor=white)
 
 **Cloud & DevOps**
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonaws&logoColor=white)
@@ -40,25 +42,27 @@ Welcome to my personal portfolio website repository! I'm passionate about buildi
 
 | Project | Description |
 |---------|-------------|
-| 🤖 **AI-Code Copilot** | Enterprise RAG-based assistant for internal codebases |
-| 📄 **Document Summarizer** | LLM-powered pipeline for large-scale document analysis |
-| 💬 **Voice-Enabled Chatbot** | Conversational AI with speech recognition & synthesis |
-| 🔬 **SILICOFCM** | EU Horizon 2020 research — in silico clinical trials |
+| 👥 **Crowd Analytics & Movement Prediction** | Forecasting where crowd density is about to build, in time to act on it |
+| 💬 **Document Chatbot with Live Lineage** | Multilingual RAG with answer traceability and real-time index updates |
+| 🕸️ **Agentic AI Insights Platform** | Orchestration graphs coordinating agents across summarization and insight synthesis |
+| 📄 **AI-Powered Document Summarizer** | Agentic graph RAG over large multi-document sets |
 
-👉 [See all projects →](https://manse404.github.io/webpage/projects)
+👉 [See all 18 projects →](https://manse404.github.io/webpage/projects)
 
 ---
 
 ## 📖 Publications
 
-I've contributed to peer-reviewed research in computational cardiology and health informatics:
+Peer-reviewed research in computational cardiology and exercise physiology —
+**14 works, 138 citations, h-index 5**:
 
+- 📝 [Sacubitril/valsartan for Non-Obstructive HCM — SILICOFCM trial (2024)](https://doi.org/10.1002/ejhf.3291) — *European Journal of Heart Failure*
 - 📝 [Ventilatory Efficiency Parameters in HCM (2024)](https://doi.org/10.1016/j.pcad.2024.10.005) — *first author*
 - 📝 [Machine Learning Approach to Gene Expression in HCM (2024)](https://doi.org/10.3390/ph17101364)
 - 📝 [Stress Reduction in Managing CVD (2022)](https://doi.org/10.1016/j.pcad.2022.01.008) — most cited
 - 📝 [Physical Activity and COVID-19 (2021)](https://doi.org/10.1177/15353702211028543) — *first author*
 
-👉 [All 12 publications →](https://manse404.github.io/webpage/research) ·
+👉 [Full research profile →](https://manse404.github.io/webpage/research) ·
 🎓 [Google Scholar →](https://scholar.google.com/citations?user=HlXUn7wAAAAJ&hl=en)
 
 ---
@@ -77,14 +81,20 @@ I'm always open to discussing new opportunities, collaborations, and innovative 
 ## 🗂️ This Repository
 
 ```
-website/   Astro source for the live site — see website/README.md
-archive/   the previous hand-written site (not deployed, tagged v1-legacy)
-files/     CV and reference material
+website/    Astro source for the live site — see website/README.md
+files/      CV (PDF + its HTML source in files/cv/) and reference material
+archive/    the previous hand-written site (not deployed, tagged v1-legacy)
 ```
 
 Content is data-driven: markdown case studies in `website/src/content/projects/`,
-plus JSON and CSV in `website/src/data/`. Pushing to `main` builds and deploys
-automatically.
+plus JSON and CSV in `website/src/data/`. The research page derives its counts —
+publications, citations, h-index — from `publications.csv`, so the numbers can
+never drift from the list underneath them.
+
+The CV is generated rather than hand-edited: `files/cv/stefan-seman-cv.html`
+is the source, rendered to PDF with [WeasyPrint](https://weasyprint.org/).
+
+Pushing to `main` builds and deploys automatically via GitHub Actions.
 
 ```bash
 cd website && npm install && npm run dev
