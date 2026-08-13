@@ -22,7 +22,7 @@
     "name": "Q Agency",
     "location": "Croatia",
     "kind": "Software Delivery",
-    "description": "Built and shipped a complete content platform — web search and deep-research agents feeding long-form generation, blog drafting, and publishing straight out to connected channels. Separately, reverse-engineered and rebuilt a backend for one of their enterprise clients.",
+    "description": "Built and shipped a complete content platform — web search and deep-research agents feeding long-form generation, blog drafting, and publishing straight out to connected channels. Separately, mapped an undocumented production system and rebuilt its backend for one of their enterprise clients.",
     "tags": ["Agentic AI", "Deep Research", "Content Generation"],
     "needsReview": false
   }

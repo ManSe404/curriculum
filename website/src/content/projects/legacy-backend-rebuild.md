@@ -1,5 +1,5 @@
 ---
-title: Reverse Engineering & Backend Delivery
+title: System Discovery & Backend Rebuild
 category: Software Engineering
 summary: Recovered what an undocumented production system actually did, specified it, and rebuilt the backend against that specification — delivered for an enterprise client through Q Agency.
 order: 7
@@ -32,8 +32,8 @@ to a description nobody has validated.
 
 ## The approach
 
-Delivered the reverse engineering and backend work for one of Q Agency's enterprise
-clients, in that order deliberately:
+Delivered the discovery and backend work for one of Q Agency's enterprise clients, in
+that order deliberately:
 
 - **Behaviour recovery first**, establishing what the existing system really did before
   changing any part of it — the prerequisite for replacing anything safely.

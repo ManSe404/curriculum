@@ -121,7 +121,7 @@ DELIVERY PARTNERS (through 404 Solutions)
   speech-to-text pipelines, orchestrated agent graphs over RAG retrieval, cross-source
   summarization.
 - Q Agency (Croatia) — a complete content platform (web search and deep-research agents,
-  long-form generation, publishing to connected channels), plus a reverse-engineered backend
+  long-form generation, publishing to connected channels), plus a discovery-led backend
   rebuild for one of their enterprise clients.
 Note: 404 Solutions is Stefan's own consultancy. The partners above are the organisations he
 delivers through; their end clients are generally not named publicly.
@@ -144,7 +144,7 @@ ExpertGroup
    multiple agents across summarization, suggestion, and meeting preparation.
 6. Marketing Content Manager (Agentic AI, with Q Agency) — web search and deep-research agents
    feeding long-form generation and blog drafting, publishing to connected channels.
-7. Reverse Engineering & Backend Delivery (Software Engineering, with Q Agency) — recovered what
+7. System Discovery & Backend Rebuild (Software Engineering, with Q Agency) — recovered what
    an undocumented production system did, specified it, and rebuilt the backend against it.
 8. AI-Powered Document Summarizer (Generative AI, with Provectus) — summarization and
    point-of-interest extraction over large multi-document sets on an agentic graph RAG
