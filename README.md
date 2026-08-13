@@ -83,7 +83,6 @@ I'm always open to discussing new opportunities, collaborations, and innovative 
 ```
 website/    Astro source for the live site — see website/README.md
 files/      CV (PDF + its HTML source in files/cv/) and reference material
-archive/    the previous hand-written site (not deployed, tagged v1-legacy)
 ```
 
 Content is data-driven: markdown case studies in `website/src/content/projects/`,
@@ -95,6 +94,9 @@ The CV is generated rather than hand-edited: `files/cv/stefan-seman-cv.html`
 is the source, rendered to PDF with [WeasyPrint](https://weasyprint.org/).
 
 Pushing to `main` builds and deploys automatically via GitHub Actions.
+
+The hand-written site this replaced is not in the working tree; it is preserved
+at the [`v1-legacy`](https://github.com/ManSe404/webpage/tree/v1-legacy) tag.
 
 ```bash
 cd website && npm install && npm run dev
