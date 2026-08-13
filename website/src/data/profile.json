@@ -15,9 +15,9 @@
   },
   "stats": [
     { "label": "Years in ML & data", "value": 10, "suffix": "+" },
-    { "label": "Peer-reviewed works", "value": 12, "suffix": "" },
-    { "label": "Citations", "value": 77, "suffix": "+" },
-    { "label": "Systems delivered", "value": 17, "suffix": "" }
+    { "label": "Peer-reviewed works", "value": 14, "suffix": "" },
+    { "label": "Citations", "value": 138, "suffix": "+" },
+    { "label": "Systems delivered", "value": 18, "suffix": "" }
   ],
   "languages": [
     { "name": "Serbian", "level": "Native" },

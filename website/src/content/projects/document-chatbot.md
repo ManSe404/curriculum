@@ -1,29 +1,54 @@
 ---
 title: RAG Document Chatbot
-category: ML / AI
-summary: An enterprise RAG chatbot with optimized ingestion and retrieval, tuned for answer accuracy and consistency.
-order: 8
+category: Generative AI
+summary: An enterprise RAG chatbot built end to end — optimized ingestion feeding retrieval over the document estate, evaluated for accuracy and consistency rather than fluency.
+order: 12
 org: Publicis Sapient
 period: 2023 — 2024
 impact:
-  - Faster access to trusted answers
-  - Lower support burden on internal teams
+  - Answers grounded in the document estate rather than in model recall
+  - Consistency treated as a target — the same question answered the same way twice
+  - Repetitive internal support load reduced rather than redirected
 stack:
   - Python
   - FastAPI
   - Azure AI Search
   - Azure Functions
-  - Docker
   - Azure OpenAI
   - Azure Pipelines
   - Data Lake
-  - Snowflake
-  - RAG
+  - Docker
+metrics:
+  - label: Scope
+    value: Built end to end
+  - label: Tuned for
+    value: Accuracy & consistency
 ---
 
-Built an enterprise RAG chatbot end to end: optimized ingestion pipelines feeding a
-retrieval layer over the organisation's document estate, with LLM evaluation and
-fine-tuning work focused on answer accuracy and consistency rather than raw fluency.
+## The problem
 
-The result was faster access to trusted answers and a measurable reduction in the
-support load that had previously absorbed the same questions repeatedly.
+An organisation's document estate holds the answers to most internal questions, and it is
+a terrible interface to them. People ask a colleague instead, which is why the same
+questions absorb the same support capacity over and over. A chatbot only helps here if the
+answers can be relied on — a fluent wrong answer moves the support load rather than
+removing it, and costs trust on the way.
+
+## The approach
+
+Built the system end to end, with the effort concentrated where retrieval quality is
+actually decided:
+
+- **Optimized ingestion pipelines** feeding the retrieval layer, since how documents enter
+  the index determines more about answer quality than the query-time logic does.
+- **Retrieval over the document estate** through Azure AI Search, grounding answers in
+  source material rather than in what the model happened to memorise.
+- **LLM evaluation** aimed at accuracy and consistency instead of fluency — the same
+  question should get the same answer twice, which is not something a model gives you for
+  free.
+- **Fine-tuning** applied where evaluation showed the gap was in the model rather than in
+  what retrieval was returning.
+
+## The outcome
+
+Faster access to answers people could actually rely on, and a reduction in the repetitive
+support load that had been quietly absorbing internal teams' time.

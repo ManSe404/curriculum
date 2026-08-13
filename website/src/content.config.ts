@@ -63,6 +63,9 @@ const publications = defineCollection({
     parser: (text) =>
       parseCsv(text).map((row) => ({
         ...row,
+        // A blank cell parses as "", which is not a valid URL. Not every work
+        // has a DOI — conference papers often don't — so drop the key instead.
+        url: row.url || undefined,
         // Year and venue are part of the id because two of these titles are
         // identical for their first 60-odd characters; slugging the title
         // alone silently collapsed them into one entry.

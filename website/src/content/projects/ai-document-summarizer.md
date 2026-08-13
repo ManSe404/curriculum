@@ -1,9 +1,9 @@
 ---
 title: AI-Powered Document Summarizer
 category: Generative AI
-summary: Document summarization and point-of-interest extraction across large multi-document sets, built to speed up delivery for high-growth companies.
+summary: Document summarization and point-of-interest extraction across large multi-document sets, built on an agentic graph RAG architecture that holds context together where chunking normally breaks it.
 featured: true
-order: 1
+order: 8
 org: 404 Solutions
 client: Provectus
 period: 2024 — Present
@@ -11,10 +11,10 @@ impact:
   - Faster turnaround on document-heavy review processes
   - Key points surfaced automatically rather than found by hand
   - Consistent output across large, mixed-format document sets
+  - Context held across chunk boundaries instead of lost to fixed-window splitting
 stack:
   - Python
   - AWS
-  - Snowflake
   - Docker
   - S3
   - Step Functions
@@ -22,6 +22,8 @@ stack:
   - LangChain
   - LlamaIndex
 metrics:
+  - label: Architecture
+    value: Agentic Graph RAG
   - label: Scope
     value: Multi-document
   - label: Sectors
@@ -31,31 +33,42 @@ metrics:
 ## The problem
 
 High-growth companies accumulate documents faster than anyone can read them. The
-bottleneck was rarely storage — it was that the substance of a set of documents could
-only be established by a person going through them one at a time, which made
-document-heavy steps the slowest part of delivery.
+bottleneck was never storage — establishing what a set of documents actually said meant a
+person working through it one file at a time, which made document-heavy steps the slowest
+part of delivery.
 
 ## The approach
 
-I built a summarization system covering three distinct jobs, because "summarize this"
-turns out to be several different problems:
+Three distinct jobs, because "summarize this" turns out to be several different problems:
 
-- **Document summarization** — condensing an individual document without losing the
-  detail that made it worth reading.
-- **Point-of-interest extraction** — pulling out the specific items that matter for a
-  given workflow, rather than producing prose someone still has to mine.
-- **Multi-document summarization** — synthesizing across a set, so the output reflects
-  what the collection says rather than being a pile of per-file summaries.
+- **Document summarization** — condensing one document without losing the detail that made
+  it worth reading.
+- **Point-of-interest extraction** — pulling out the items that matter to a given workflow,
+  rather than producing prose someone still has to mine.
+- **Multi-document summarization** — synthesizing across a set, so the output reflects the
+  collection rather than a pile of per-file summaries.
 
-The pipeline runs serverless on AWS: S3 for document landing, Step Functions for
-orchestration, and AWS SAM for reproducible deploys. It was built to be multi-tenant
-from the start, since it serves several organisations across different sectors —
-insurance, manufacturing, and biomedical work among them — each with its own document
-conventions and its own idea of what counts as interesting.
+All three share one failure mode: chunking. Splitting documents into fixed windows to fit a
+context limit is convenient for retrieval and destructive for meaning — a clause separated
+from the condition qualifying it, a figure from its table. Flat vector search compounds it,
+because similarity rewards redundancy: the same point restated across five documents, and
+the one contradicting it missed.
+
+So retrieval is an **agentic graph RAG** architecture rather than a single-shot lookup.
+Chunks are nodes in a graph preserving their relationships — to the section and document
+they came from, and to the entities they share with chunks elsewhere. Retrieval traverses
+those edges instead of ranking by distance alone, so a passage arrives carrying the context
+that makes it mean what it means, and the agentic layer decides what to do next: expand
+along a relationship, re-query, or stop. That is what makes multi-document summarization
+something other than concatenation.
+
+It runs serverless on AWS — S3, Step Functions, AWS SAM — and multi-tenant from the start,
+serving organisations across insurance, manufacturing, and biomedical work, each with its
+own document conventions.
 
 ## The outcome
 
 Document-heavy stages stopped being the constraint on delivery. Reviewers start from
-extracted points of interest and a synthesis across the whole set, instead of from page
-one of file one — and because the extraction is systematic, what gets surfaced no longer
-depends on who happened to be reading.
+extracted points of interest and a synthesis across the whole set instead of page one of
+file one — and because extraction is systematic, what surfaces no longer depends on who
+happened to be reading.

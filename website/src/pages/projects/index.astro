@@ -8,6 +8,12 @@ const projects = (await getCollection('projects')).sort(
 );
 
 const categories = ['All', ...new Set(projects.map((p) => p.data.category))];
+
+// The three most recent lead the page as full case-study cards; everything after
+// is a compact grid, so eighteen projects stay scannable instead of becoming a
+// wall of equally-weighted blocks.
+const lead = projects.slice(0, 3);
+const rest = projects.slice(3);
 ---
 
 <Base
@@ -46,10 +52,20 @@ const categories = ['All', ...new Set(projects.map((p) => p.data.category))];
 
   <section class="section projects-section">
     <div class="wrap">
-      <div class="projects-grid" data-projects>
-        {projects.map((project) => (
+      {/* Both grids use .project-slot, so the category filter below is one pass
+          over everything and does not need to know about the split. */}
+      <div class="lead-grid" data-grid>
+        {lead.map((project) => (
           <div class="project-slot" data-category={project.data.category}>
-            <ProjectCard project={project} featured={project.data.featured} />
+            <ProjectCard project={project} featured />
+          </div>
+        ))}
+      </div>
+
+      <div class="projects-grid" data-grid>
+        {rest.map((project) => (
+          <div class="project-slot" data-category={project.data.category}>
+            <ProjectCard project={project} compact />
           </div>
         ))}
       </div>
@@ -62,6 +78,7 @@ const categories = ['All', ...new Set(projects.map((p) => p.data.category))];
 <script>
   const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
   const slots = document.querySelectorAll<HTMLElement>('.project-slot');
+  const grids = document.querySelectorAll<HTMLElement>('[data-grid]');
   const empty = document.querySelector<HTMLElement>('[data-empty]');
 
   buttons.forEach((button) => {
@@ -79,6 +96,12 @@ const categories = ['All', ...new Set(projects.map((p) => p.data.category))];
         const match = selected === 'All' || slot.dataset.category === selected;
         slot.hidden = !match;
         if (match) visible++;
+      });
+
+      // A grid whose slots are all hidden still contributes its own margin, so
+      // filtering to a category with no lead projects would leave a gap on top.
+      grids.forEach((grid) => {
+        grid.hidden = !grid.querySelector('.project-slot:not([hidden])');
       });
 
       if (empty) empty.hidden = visible > 0;
@@ -151,10 +174,24 @@ const categories = ['All', ...new Set(projects.map((p) => p.data.category))];
     padding-top: clamp(2rem, 5vh, 3rem);
   }
 
+  /* Three across at desktop width — the lead row is the page's opening statement. */
+  .lead-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 1.15rem;
+    margin-bottom: 1.15rem;
+  }
+
+  /* Denser than the lead row: compact cards carry summary only, so they tile
+     smaller without feeling cramped. */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
     gap: 1.15rem;
+  }
+
+  [data-grid][hidden] {
+    display: none;
   }
 
   .project-slot[hidden] {

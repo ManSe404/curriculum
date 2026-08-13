@@ -1,0 +1,688 @@
+<!--
+  Source of truth for the CV PDF. Content mirrors website/src/data (profile,
+  experience, skills, publications) and website/src/content/projects.
+
+  Regenerate after editing:
+    weasyprint files/cv/stefan-seman-cv.html files/cv/out.pdf
+    cp files/cv/out.pdf "files/CV Stefan Seman.pdf"
+    cp files/cv/out.pdf website/public/files/stefan-seman-cv.pdf
+
+  Research figures come from Google Scholar, not from a hand-kept count —
+  re-check the profile before changing them.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stefan Seman — CV</title>
+<meta name="author" content="Stefan Seman">
+<meta name="description" content="Head of AI, ML Engineer and PhD Researcher — LLM/RAG architectures, agentic applications, enterprise document intelligence, cloud-native data platforms.">
+<meta name="keywords" content="AI, Machine Learning, LLM, RAG, Generative AI, Document Intelligence, Azure, AWS, Python, Head of AI">
+<style>
+  @page {
+    size: A4;
+    margin: 13mm 14mm 12mm 14mm;
+    @bottom-right {
+      content: "Stefan Seman · " counter(page) " / " counter(pages);
+      font-family: "Fira Mono", monospace;
+      font-size: 6.6pt;
+      color: #9aa3b0;
+      padding-top: 3mm;
+    }
+  }
+
+  :root {
+    --ink: #16191f;
+    --body: #2f3540;
+    --muted: #6b7480;
+    --faint: #98a1ad;
+    --rule: #dfe3e9;
+    --teal: #0d7469;
+    --teal-soft: #e7f3f1;
+    --violet: #5b45b8;
+    --violet-soft: #eeebfa;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    font-family: "Fira Sans", sans-serif;
+    font-size: 9.1pt;
+    line-height: 1.42;
+    color: var(--body);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .mono { font-family: "Fira Mono", monospace; }
+
+  /* ── Header ─────────────────────────────────────────────────────────── */
+
+  header {
+    border-bottom: 2.2pt solid var(--ink);
+    padding-bottom: 3.4mm;
+    margin-bottom: 4mm;
+  }
+
+  .name {
+    font-size: 25pt;
+    font-weight: 700;
+    letter-spacing: -0.7pt;
+    color: var(--ink);
+    line-height: 1.05;
+  }
+
+  .role {
+    font-size: 10pt;
+    font-weight: 500;
+    color: var(--teal);
+    letter-spacing: 0.1pt;
+    margin-top: 1.2mm;
+  }
+
+  .contact {
+    margin-top: 3mm;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 4.5mm;
+    font-size: 7.6pt;
+    color: var(--muted);
+    font-family: "Fira Mono", monospace;
+  }
+
+  .contact span { white-space: nowrap; }
+  .contact b { color: var(--ink); font-weight: 500; }
+
+  /* ── Section frame ──────────────────────────────────────────────────── */
+
+  section { margin-bottom: 4.1mm; }
+
+  h2 {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 1.5pt;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 0.7pt solid var(--rule);
+    padding-bottom: 1.1mm;
+    margin-bottom: 2.4mm;
+  }
+
+  h2::before {
+    content: "";
+    display: inline-block;
+    width: 2.4mm;
+    height: 2.4mm;
+    background: var(--teal);
+    margin-right: 2mm;
+    vertical-align: -0.2mm;
+  }
+
+  /* ── Profile ────────────────────────────────────────────────────────── */
+
+  .profile { font-size: 9.2pt; color: var(--body); }
+  .profile em { color: var(--ink); font-style: normal; font-weight: 500; }
+
+  /* ── Skills ─────────────────────────────────────────────────────────── */
+
+  .skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5mm 7mm;
+  }
+
+  .skill-row { display: flex; gap: 2.5mm; break-inside: avoid; }
+
+  .skill-key {
+    font-family: "Fira Mono", monospace;
+    font-size: 7.2pt;
+    font-weight: 500;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.3pt;
+    width: 27mm;
+    flex: none;
+    padding-top: 0.35mm;
+  }
+
+  .skill-val { font-size: 8.4pt; color: var(--body); }
+
+  /* ── Experience ─────────────────────────────────────────────────────── */
+
+  .job { margin-bottom: 3.1mm; }
+  /* Let long roles flow across a page break, but never orphan the heading
+     from its first bullets, and never split a single bullet. */
+  .job-head, .job-org { break-after: avoid; }
+  ul.points li { break-inside: avoid; }
+  .stack { break-before: avoid; }
+  .job:last-child { margin-bottom: 0; }
+
+  /* Float rather than flex: WeasyPrint gives a flex line extra leading here,
+     which opened a blank line between every job title and its employer. */
+  .job-head { line-height: 1.2; }
+
+  .job-title {
+    font-size: 9.9pt;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.1pt;
+  }
+
+  .job-date {
+    float: right;
+    font-family: "Fira Mono", monospace;
+    font-size: 7.4pt;
+    color: var(--muted);
+    white-space: nowrap;
+    padding-left: 4mm;
+  }
+
+  .job-org {
+    line-height: 1.2;
+    margin-top: 0.6mm;
+    font-size: 8.6pt;
+    font-weight: 500;
+    color: var(--teal);
+    margin-bottom: 1mm;
+  }
+
+  .job-org .place { color: var(--faint); font-weight: 400; }
+
+  ul.points { list-style: none; margin-left: 0; }
+
+  ul.points li {
+    position: relative;
+    padding-left: 3.2mm;
+    margin-bottom: 0.5mm;
+    font-size: 8.6pt;
+  }
+
+  ul.points li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1.6mm;
+    width: 1.1mm;
+    height: 1.1mm;
+    background: var(--teal);
+  }
+
+  .stack {
+    font-family: "Fira Mono", monospace;
+    font-size: 7.1pt;
+    color: var(--muted);
+    margin-top: 1mm;
+    padding-left: 3.2mm;
+  }
+
+  .stack b { color: var(--ink); font-weight: 500; }
+
+  /* ── Projects ───────────────────────────────────────────────────────── */
+
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4mm 6mm;
+  }
+
+  .proj { break-inside: avoid; }
+
+  .proj-title {
+    font-size: 8.7pt;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+
+  .proj-meta {
+    font-family: "Fira Mono", monospace;
+    font-size: 6.8pt;
+    color: var(--violet);
+    margin: 0.3mm 0 0.8mm;
+  }
+
+  .proj-desc { font-size: 8.2pt; color: var(--body); }
+
+  .proj-stack {
+    font-family: "Fira Mono", monospace;
+    font-size: 6.8pt;
+    color: var(--faint);
+    margin-top: 0.5mm;
+  }
+
+  /* ── Publications ───────────────────────────────────────────────────── */
+
+  .pub-stats {
+    display: flex;
+    gap: 3mm;
+    margin-bottom: 2.4mm;
+  }
+
+  .pstat {
+    background: var(--teal-soft);
+    border-left: 1.6pt solid var(--teal);
+    padding: 1.2mm 3mm;
+    flex: 1;
+  }
+
+  .pstat-v {
+    font-family: "Fira Mono", monospace;
+    font-size: 11pt;
+    font-weight: 500;
+    color: var(--teal);
+    line-height: 1.1;
+  }
+
+  .pstat-l {
+    font-size: 7pt;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4pt;
+  }
+
+  .pub { margin-bottom: 1.7mm; break-inside: avoid; }
+
+  .pub-title {
+    font-size: 8.4pt;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.28;
+  }
+
+  .pub-meta {
+    font-size: 7.6pt;
+    color: var(--muted);
+  }
+
+  .pub-meta .venue { color: var(--violet); font-weight: 500; }
+
+  /* ── Closing grid ───────────────────────────────────────────────────── */
+
+  .close-grid { display: flex; gap: 7mm; align-items: flex-start; }
+  .close-grid > .block { flex: 1 1 0; min-width: 0; }
+  .memberships { display: flex; gap: 7mm; }
+  .memberships ul { flex: 1 1 0; min-width: 0; }
+
+  .block { break-inside: avoid; }
+
+  h3 {
+    font-size: 7.4pt;
+    font-weight: 700;
+    letter-spacing: 1pt;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 1.4mm;
+  }
+
+  .edu { margin-bottom: 1.6mm; }
+  .edu-d { font-size: 8.5pt; font-weight: 500; color: var(--ink); }
+  .edu-i { font-size: 7.6pt; color: var(--muted); }
+  .edu-n { font-size: 7.6pt; color: var(--body); }
+
+  ul.plain { list-style: none; }
+
+  ul.plain li {
+    font-size: 8.2pt;
+    padding-left: 3.2mm;
+    position: relative;
+    margin-bottom: 0.35mm;
+  }
+
+  ul.plain li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-size: 6.5pt;
+    top: 0.25mm;
+  }
+
+  ul.plain li i { font-style: normal; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="name">Stefan Seman</div>
+  <div class="role">Head of AI · ML Engineer · PhD Researcher</div>
+  <div class="contact">
+    <span><b>Belgrade, Serbia</b></span>
+    <span><a href="mailto:stefan.seman404@gmail.com">stefan.seman404@gmail.com</a></span>
+    <span><a href="tel:+38162262131">+381 62 262 131</a></span>
+    <span><a href="https://manse404.github.io/webpage/">manse404.github.io/webpage</a></span>
+    <span><a href="https://www.linkedin.com/in/sseman/">linkedin.com/in/sseman</a></span>
+    <span><a href="https://github.com/ManSe404">github.com/ManSe404</a></span>
+    <span><a href="https://scholar.google.com/citations?user=HlXUn7wAAAAJ&amp;hl=en">Google Scholar</a></span>
+  </div>
+</header>
+
+<section>
+  <h2>Profile</h2>
+  <p class="profile">
+    AI leader and hands-on engineer. I run an AI and Data practice as <em>Head of AI</em> and still build
+    the systems myself — LLM and RAG architectures, agentic applications, enterprise document
+    intelligence, and cloud-native data platforms taken from problem statement to something running,
+    monitored, and maintained. In parallel I deliver AI work through my own B2B consultancy for
+    partner organisations in Europe and the US. Ten years of applied ML, grounded in a PhD track and
+    <em>14 peer-reviewed publications</em> in computational cardiology and exercise physiology.
+  </p>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <div class="skill-row">
+      <div class="skill-key">Languages</div>
+      <div class="skill-val">Python, SQL, Bash, LabVIEW</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-key">ML &amp; GenAI</div>
+      <div class="skill-val">PyTorch, Transformers, LangChain, LlamaIndex, RAG, AI Agents, Fine-Tuning, Embeddings, XGBoost, Computer Vision</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-key">Backend</div>
+      <div class="skill-val">FastAPI, Flask, REST APIs, Docker, PySpark, RabbitMQ</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-key">Azure</div>
+      <div class="skill-val">AI Foundry, Azure OpenAI, AI Search, Data Factory, Synapse, Microsoft Fabric, Functions, Data Lake, Databricks, DevOps</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-key">AWS</div>
+      <div class="skill-val">Bedrock, Lambda, Step Functions, S3, ECS, EC2, SAM</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-key">Data &amp; Vectors</div>
+      <div class="skill-val">PostgreSQL, DynamoDB, Redis, Qdrant, Pinecone, Milvus, PgVector</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-key">Ops &amp; Tooling</div>
+      <div class="skill-val">Git, Jenkins, Grafana, KubeFlow, Power BI</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-key">Research</div>
+      <div class="skill-val">Biostatistics, SPSS, ECG &amp; CPET analysis, in silico trials</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-date">Apr 2025 — Present</div>
+      <div class="job-title">Head of AI</div>
+    </div>
+    <div class="job-org">ExpertGroup <span class="place">· Belgrade, Serbia</span></div>
+    <ul class="points">
+      <li>Lead the AI and Data team, reporting to the CEO — organisation, people management, hiring, and mentoring.</li>
+      <li>Own AI initiatives end to end: originating projects, presales, architecture, and engineering standards.</li>
+      <li>Delivered RAG chatbots over live document collections — multilingual retrieval with answer lineage and real-time index updates.</li>
+      <li>Built gradient-boosted time series models for supply chain and sales forecasting on a monthly planning cycle.</li>
+      <li>Architecting crowd movement prediction and venue analytics for large-scale events.</li>
+      <li>Stay hands-on — demo pitches, proofs of concept, and MVPs built alongside the team.</li>
+    </ul>
+    <div class="stack"><b>Stack:</b> Python, FastAPI, LangChain, Qdrant, RabbitMQ, Azure AI Foundry, Microsoft Fabric, Azure DevOps, Docker, XGBoost, Computer Vision</div>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-date">Oct 2024 — Present</div>
+      <div class="job-title">Independent AI &amp; ML Consultant</div>
+    </div>
+    <div class="job-org">404 Solutions <span class="place">· own B2B consultancy</span></div>
+    <ul class="points">
+      <li>Deliver AI and software work for delivery partners in Europe and the US, serving their enterprise clients.</li>
+      <li>Designed and operated multi-tenant AI systems — document intelligence for automated extraction, classification, and summarization.</li>
+      <li>Built agentic graph RAG architectures for multi-document summarization and risk analysis in specialty insurance.</li>
+      <li>Built scalable AWS workflows on S3, Step Functions, Bedrock, and APIs supporting multiple organisations.</li>
+      <li>Deployed, monitored, and maintained production systems across distributed client environments.</li>
+    </ul>
+    <div class="stack"><b>Stack:</b> Python, FastAPI, RAG, AI Agents, LangChain, AWS Bedrock, Lambda, Step Functions, S3, ECS, DynamoDB</div>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-date">Oct 2023 — Sep 2024</div>
+      <div class="job-title">Senior Data Scientist &amp; Software Engineer in AI, R&amp;D</div>
+    </div>
+    <div class="job-org">Publicis Sapient</div>
+    <ul class="points">
+      <li>Led development from proof of concept through to production-grade systems.</li>
+      <li>Built enterprise RAG systems with retrieval optimization, evaluated for accuracy and consistency rather than fluency.</li>
+      <li>Delivered an enterprise AI code copilot grounded in internal code and documentation, with retrieval respecting existing access boundaries.</li>
+      <li>Delivered client-facing solutions and technical propositions.</li>
+    </ul>
+    <div class="stack"><b>Stack:</b> Python, FastAPI, LangChain, Transformers, PyTorch, Azure OpenAI, KubeFlow, Redis, Milvus, Docker</div>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-date">May 2022 — Oct 2023</div>
+      <div class="job-title">Data Scientist &amp; Developer → Senior Specialist</div>
+    </div>
+    <div class="job-org">Valcon <span class="place">· Netherlands</span></div>
+    <ul class="points">
+      <li>Led and mentored a team of six engineers.</li>
+      <li>Owned the design of document processing microservices.</li>
+      <li>Built data extraction and document classification services from scratch, delivered to production.</li>
+    </ul>
+    <div class="stack"><b>Stack:</b> Python, Azure DevOps, Azure Data Factory, Synapse, Data Lake, PyTorch, Flask, Docker</div>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-date">Oct 2021 — Apr 2022</div>
+      <div class="job-title">Data Scientist</div>
+    </div>
+    <div class="job-org">Optimal Systems GmbH</div>
+    <ul class="points">
+      <li>Model evaluation and hyperparameter tuning for ML classification systems.</li>
+      <li>Built an Azure extraction and transformation platform feeding self-service Power BI reporting.</li>
+    </ul>
+    <div class="stack"><b>Stack:</b> Python, Azure Data Factory, Synapse, Data Lake, Power BI, Docker</div>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-date">Mar 2020 — Mar 2022</div>
+      <div class="job-title">Researcher</div>
+    </div>
+    <div class="job-org">BioIRC — Bioengineering R&amp;D Center</div>
+    <ul class="points">
+      <li>Built components for SILICOFCM, an EU Horizon 2020 computational platform for in silico clinical trials.</li>
+      <li>ECG, CPET, and biomedical data processing; contributed to peer-reviewed publications.</li>
+    </ul>
+    <div class="stack"><b>Stack:</b> Python, PyTorch, Statistical Analysis, SPSS, ECG, CPET</div>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-date">Oct 2018 — Mar 2022</div>
+      <div class="job-title">PhD Researcher</div>
+    </div>
+    <div class="job-org">University of Belgrade</div>
+    <ul class="points">
+      <li>Developed research methodology and statistical frameworks; applied machine learning to biomedical datasets.</li>
+      <li>Published internationally in cardiology and exercise physiology journals.</li>
+    </ul>
+    <div class="stack"><b>Stack:</b> Python, PyTorch, SPSS, Machine Learning, Biostatistics</div>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-date">Oct 2014 — Jul 2018</div>
+      <div class="job-title">Sports Scientist</div>
+    </div>
+    <div class="job-org">Sport and Recreation Center Obliqus</div>
+    <ul class="points">
+      <li>Built algorithms for signal processing and data collection; functional testing and performance analysis for athletes.</li>
+    </ul>
+    <div class="stack"><b>Stack:</b> Python, SPSS, LabVIEW, Data Analysis</div>
+  </div>
+</section>
+
+<section>
+  <h2>Selected Projects</h2>
+  <div class="projects">
+    <div class="proj">
+      <div class="proj-title">Document Chatbot with Live Lineage</div>
+      <div class="proj-meta">ExpertGroup · team lead &amp; delivery</div>
+      <div class="proj-desc">High-precision multilingual chatbot over a living document set — every answer traceable to its source passage, index updated in real time as documents change.</div>
+      <div class="proj-stack">Python · FastAPI · LangChain · Qdrant · Azure AI Foundry</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-title">Agentic AI Insights Platform</div>
+      <div class="proj-meta">404 Solutions · with WiserTech</div>
+      <div class="proj-desc">Orchestration graphs coordinating multiple agents across summarization, suggestion, and meeting preparation — surfacing what matters before it is asked for.</div>
+      <div class="proj-stack">Python · AI Agents · RAG · Speech-to-Text</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-title">AI-Powered Document Summarizer</div>
+      <div class="proj-meta">404 Solutions · with Provectus</div>
+      <div class="proj-desc">Summarization and point-of-interest extraction across large multi-document sets, on an agentic graph RAG architecture that holds context where chunking breaks it.</div>
+      <div class="proj-stack">Python · AWS Bedrock · Step Functions · LangChain · LlamaIndex</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-title">RiskFocus — Risk Summariser</div>
+      <div class="proj-meta">404 Solutions · with Provectus</div>
+      <div class="proj-desc">Multi-document risk extraction surfacing where documents reinforce, qualify, or contradict each other — with traceable lineage back to every source.</div>
+      <div class="proj-stack">Python · AWS Bedrock · Lambda · ECS · RAG</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-title">Crowd Analytics &amp; Movement Prediction</div>
+      <div class="proj-meta">ExpertGroup · architect &amp; technical lead</div>
+      <div class="proj-desc">Crowd movement prediction for a large-scale public event — forecasting where density is about to build so visitors can be routed around congestion instead of into it.</div>
+      <div class="proj-stack">Python · Computer Vision · Time Series · Azure IoT Hub · Fabric</div>
+    </div>
+
+
+
+    <div class="proj">
+      <div class="proj-title">Slingshot — AI Code Copilot</div>
+      <div class="proj-meta">Publicis Sapient</div>
+      <div class="proj-desc">Enterprise AI copilot taken from proof of concept through MVP to delivered product, grounded in internal code and docs with access-aware retrieval.</div>
+      <div class="proj-stack">Python · Azure OpenAI · LangChain · Milvus · KubeFlow</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-title">Large-Scale Document ETL Pipelines</div>
+      <div class="proj-meta">404 Solutions · with Provectus</div>
+      <div class="proj-desc">Serverless ingestion and transformation moving documents at scale through load, parse, transform, and delivery — the substrate the summarization and risk systems run on.</div>
+      <div class="proj-stack">Python · AWS Lambda · Step Functions · DynamoDB · S3 · SAM</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-title">SILICOFCM — EU Horizon 2020</div>
+      <div class="proj-meta">BioIRC · silicofcm.eu</div>
+      <div class="proj-desc">Computational platform for in silico clinical trials of familial cardiomyopathies — ECG and CPET analysis, statistical modelling, patient-specific 3D heart models.</div>
+      <div class="proj-stack">Python · PyTorch · Biostatistics · ECG · CPET</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Research</h2>
+  <div class="pub-stats">
+    <div class="pstat">
+      <div class="pstat-v">14</div>
+      <div class="pstat-l">Peer-reviewed works</div>
+    </div>
+    <div class="pstat">
+      <div class="pstat-v">138</div>
+      <div class="pstat-l">Citations</div>
+    </div>
+    <div class="pstat">
+      <div class="pstat-v">5</div>
+      <div class="pstat-l">h-index</div>
+    </div>
+    <div class="pstat">
+      <div class="pstat-v">3</div>
+      <div class="pstat-l">First-author works</div>
+    </div>
+  </div>
+
+  <div class="pub">
+    <div class="pub-title">Sacubitril/valsartan for the treatment of non-obstructive hypertrophic cardiomyopathy: an open-label randomized controlled trial (SILICOFCM)</div>
+    <div class="pub-meta"><span class="venue">European Journal of Heart Failure</span> · 2024 · co-author · 26 citations</div>
+  </div>
+
+  <div class="pub">
+    <div class="pub-title">The ventilatory efficiency parameters outperform peak oxygen consumption in monitoring therapy effects in patients with hypertrophic cardiomyopathy</div>
+    <div class="pub-meta"><span class="venue">Progress in Cardiovascular Diseases</span> · 2024 · first author</div>
+  </div>
+
+  <div class="pub">
+    <div class="pub-title">A Machine Learning Approach to Gene Expression in Hypertrophic Cardiomyopathy</div>
+    <div class="pub-meta"><span class="venue">Pharmaceuticals (MDPI)</span> · 2024 · co-author</div>
+  </div>
+
+  <div class="pub">
+    <div class="pub-title">Defining the importance of stress reduction in managing cardiovascular disease — the role of exercise</div>
+    <div class="pub-meta"><span class="venue">Progress in Cardiovascular Diseases</span> · 2022 · co-author · 72 citations</div>
+  </div>
+
+
+  <div class="pub">
+    <div class="pub-title">Physical activity and exercise as an essential medical strategy for the COVID-19 pandemic and beyond</div>
+    <div class="pub-meta"><span class="venue">Experimental Biology and Medicine</span> · 2021 · first author</div>
+  </div>
+
+  <div class="pub">
+    <div class="pub-title">Reduced cardiac workload and enhanced oxygen extraction during maximal exercise in recreational endurance runners</div>
+    <div class="pub-meta"><span class="venue">Open Heart</span> · 2026 · co-author</div>
+  </div>
+</section>
+
+<section>
+  <div class="close-grid">
+    <div class="block">
+      <h3>Education</h3>
+      <div class="edu">
+        <div class="edu-d">PhD Candidate, Sport Science</div>
+        <div class="edu-i">University of Belgrade · 2018 — Present</div>
+        <div class="edu-n">Machine learning applications in exercise physiology and biomedical signal processing.</div>
+      </div>
+      <div class="edu">
+        <div class="edu-d">Master's Degree, Sports Medicine</div>
+        <div class="edu-i">University of Novi Sad</div>
+      </div>
+      <div class="edu">
+        <div class="edu-d">Bachelor's Degree, Sport Science</div>
+        <div class="edu-i">University of Belgrade</div>
+      </div>
+      <h3 style="margin-top:3mm">Languages</h3>
+      <ul class="plain">
+        <li>Serbian <i>— native</i></li>
+        <li>English <i>— fluent</i></li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>Certifications</h3>
+      <ul class="plain">
+        <li>Microsoft Certified: Azure AI Associate</li>
+        <li>Microsoft Certified: Azure Data Fundamentals</li>
+        <li>Lakehouse Fundamentals <i>— Databricks Academy</i></li>
+        <li>Generative AI Fundamentals <i>— Databricks Academy</i></li>
+        <li>COVID-19 Contact Tracing <i>— Johns Hopkins University</i></li>
+      </ul>
+
+      <h3 style="margin-top:3mm">Memberships</h3>
+      <ul class="plain">
+        <li>ACSM — American College of Sports Medicine</li>
+        <li>SEBM — Society for Experimental Biology and Medicine</li>
+        <li>Serbian Society for Prevention of Chronic Noncommunicable Diseases</li>
+        <li>Serbian Mountain Rescue Service</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

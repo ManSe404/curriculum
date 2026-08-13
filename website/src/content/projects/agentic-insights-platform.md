@@ -1,9 +1,9 @@
 ---
 title: Agentic AI Insights Platform
 category: Agentic AI
-summary: An agentic application for insight synthesis — orchestration graphs coordinating multiple agents across summarization, suggestion, and meeting-preparation workflows.
+summary: An agentic application for insight synthesis — orchestration graphs coordinating multiple agents across summarization, suggestion, and meeting preparation, surfacing what matters before it is asked for.
 featured: true
-order: 4
+order: 5
 org: 404 Solutions
 client: WiserTech
 period: 2024 — Present

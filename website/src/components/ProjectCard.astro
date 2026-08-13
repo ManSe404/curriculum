@@ -5,9 +5,12 @@ import type { CollectionEntry } from 'astro:content';
 interface Props {
   project: CollectionEntry<'projects'>;
   featured?: boolean;
+  // Strips the card back to category, title, org, and summary. Used for the
+  // long tail of the index, where eighteen full cards is more than anyone reads.
+  compact?: boolean;
 }
 
-const { project, featured = false } = Astro.props;
+const { project, featured = false, compact = false } = Astro.props;
 const { title, category, summary, stack, impact, metrics, org, client } =
   project.data;
 
@@ -20,7 +23,7 @@ const overflow = stack.length - shownStack.length;
 ---
 
 <a
-  class={`project card card-link ${featured ? 'is-featured' : ''}`}
+  class={`project card card-link ${featured ? 'is-featured' : ''} ${compact ? 'is-compact' : ''}`}
   href={withBase(`/projects/${project.id}`)}
   data-reveal
 >
@@ -43,14 +46,18 @@ const overflow = stack.length - shownStack.length;
     </ul>
   )}
 
-  <div class="chips project-stack">
-    {shownStack.map((tech) => (
-      <span class="chip">{tech}</span>
-    ))}
-    {overflow > 0 && <span class="chip">+{overflow}</span>}
-  </div>
+  {!compact && (
+    <div class="chips project-stack">
+      {shownStack.map((tech) => (
+        <span class="chip">{tech}</span>
+      ))}
+      {overflow > 0 && <span class="chip">+{overflow}</span>}
+    </div>
+  )}
 
-  <span class="project-cta mono" aria-hidden="true">Read case study →</span>
+  <span class="project-cta mono" aria-hidden="true">
+    {compact ? 'Read →' : 'Read case study →'}
+  </span>
 </a>
 
 <style>
@@ -87,6 +94,23 @@ const overflow = stack.length - shownStack.length;
 
   .is-featured .project-title {
     font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+  }
+
+  /* Compact cards carry summary only, so they need less internal rhythm. */
+  .is-compact {
+    gap: 0.55rem;
+  }
+
+  .is-compact .project-title {
+    font-size: 1.05rem;
+  }
+
+  .is-compact .project-summary {
+    font-size: 0.87rem;
+  }
+
+  .is-compact .project-org {
+    margin-top: -0.3rem;
   }
 
   .project-summary {

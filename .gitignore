@@ -1,0 +1,78 @@
+# This repo is the public website and nothing else. Anything local, tooling-
+# related, or secret stays out of it.
+
+# --- AI / editor tooling -----------------------------------------------------
+.claude/
+.claude*/
+CLAUDE.md
+CLAUDE.local.md
+.mcp.json
+.cursor/
+.aider*
+.continue/
+.windsurf/
+.github/copilot-instructions.md
+
+# --- Secrets & credentials ---------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+*.ppk
+credentials
+credentials.json
+*credentials*.json
+service-account*.json
+secrets.*
+.secrets/
+.netrc
+.npmrc
+.pypirc
+.aws/
+.azure/
+.gcloud/
+*token*.json
+*.crt
+*.cer
+
+# --- Build output & dependencies ---------------------------------------------
+node_modules/
+dist/
+.astro/
+.cache/
+.vite/
+*.tsbuildinfo
+
+# --- Local environment -------------------------------------------------------
+.python-version
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.tool-versions
+.direnv/
+.nvmrc
+
+# --- Editors & OS ------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Logs & scratch ----------------------------------------------------------
+*.log
+npm-debug.log*
+yarn-error.log*
+.tmp/
+tmp/
+scratch/

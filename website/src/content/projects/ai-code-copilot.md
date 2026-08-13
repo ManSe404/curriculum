@@ -1,9 +1,8 @@
 ---
 title: Slingshot — AI Code Copilot
 category: Generative AI
-summary: An enterprise AI copilot taken from proof of concept through MVP to a delivered product, grounded in internal code and documentation.
-featured: true
-order: 2
+summary: An enterprise AI copilot taken from proof of concept through MVP to delivered product — grounded in internal code and documentation, with retrieval respecting existing access boundaries.
+order: 11
 org: Publicis Sapient
 period: 2023 — 2024
 impact:
@@ -13,7 +12,6 @@ impact:
 stack:
   - Python
   - Redis
-  - Snowflake
   - RAG
   - AI Agents
   - LangChain

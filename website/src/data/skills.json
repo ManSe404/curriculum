@@ -7,12 +7,12 @@
   {
     "group": "ML & Generative AI",
     "icon": "brain",
-    "items": ["PyTorch", "Transformers", "LangChain", "LlamaIndex", "RAG", "AI Agents", "Fine-Tuning", "Embeddings"]
+    "items": ["PyTorch", "Transformers", "LangChain", "LlamaIndex", "RAG", "AI Agents", "Fine-Tuning", "Embeddings", "XGBoost", "Computer Vision"]
   },
   {
     "group": "Backend & Services",
     "icon": "server",
-    "items": ["FastAPI", "Flask", "REST APIs", "Docker", "PySpark"]
+    "items": ["FastAPI", "Flask", "REST APIs", "Docker", "PySpark", "RabbitMQ"]
   },
   {
     "group": "AWS",
@@ -22,12 +22,12 @@
   {
     "group": "Azure",
     "icon": "cloud",
-    "items": ["Data Factory", "Synapse", "DevOps", "Functions", "AI Search", "Azure OpenAI", "Data Lake", "Databricks"]
+    "items": ["Data Factory", "Synapse", "DevOps", "Functions", "AI Search", "Azure OpenAI", "AI Foundry", "Microsoft Fabric", "Data Lake", "Databricks"]
   },
   {
     "group": "Data & Vector Stores",
     "icon": "database",
-    "items": ["PostgreSQL", "DynamoDB", "Redis", "Snowflake", "Pinecone", "Milvus", "PgVector"]
+    "items": ["PostgreSQL", "DynamoDB", "Redis", "Qdrant", "Pinecone", "Milvus", "PgVector"]
   },
   {
     "group": "Ops & Tooling",

@@ -1,162 +1,206 @@
 Stefan Seman - Reusable Context
-Updated from local repo sources on 2026-05-21
-Sources: files/CV Stefan Seman.pdf, index.html, projects.html
+Updated 2026-08-13 from the site data in website/src (profile, experience, collaborations,
+skills, projects, publications) and from the live Google Scholar profile.
+Canonical sources: website/src/data/*.json, website/src/data/publications.csv,
+website/src/content/projects/*.md, files/cv/stefan-seman-cv.html.
 
 IDENTITY
 Name: Stefan Seman
-Headline: ML Engineer | Data Scientist | PhD Researcher
+Headline: Head of AI | ML Engineer | PhD Researcher
+Location: Belgrade, Serbia
 Website: https://manse404.github.io/webpage/
 Email: stefan.seman404@gmail.com
-Phone: +38162262131
+Phone: +381 62 262 131
 LinkedIn: https://www.linkedin.com/in/sseman/
 GitHub: https://github.com/ManSe404
 Google Scholar: https://scholar.google.com/citations?user=HlXUn7wAAAAJ&hl=en
 ResearchGate: https://www.researchgate.net/profile/Stefan-Seman
 
 SHORT BIO
-Stefan Seman is an ML Engineer, Data Scientist, and PhD Researcher focused on building production-ready AI systems. His background combines machine learning, generative AI, software engineering, cloud delivery, and biomedical research. He works across document intelligence, retrieval-augmented generation, enterprise AI systems, data platforms, and healthcare-related research.
+Stefan Seman is Head of AI at ExpertGroup and an ML engineer who still builds the systems
+himself. His work spans LLM and RAG architectures, agentic applications, enterprise document
+intelligence, and cloud-native data platforms, grounded in a decade of biomedical research and
+peer-reviewed publication. In parallel he runs 404 Solutions, his own B2B consultancy,
+delivering AI and software work for partner organisations in Europe and the US.
 
 POSITIONING
-- Builds end-to-end AI and data systems, not just models.
-- Strong focus on LLMs, RAG systems, document intelligence, and cloud workflows.
-- Combines industry delivery experience with academic research and publication history.
-- Has overlap across enterprise software, data engineering, and biomedicine.
+- Leads an AI and Data practice and remains hands-on in delivery.
+- Builds end-to-end AI and data systems, not just models — problem statement through to
+  something running, monitored, and maintained.
+- Strong focus on LLMs, RAG, agentic orchestration, document intelligence, and cloud workflows.
+- Combines enterprise delivery experience with an academic research and publication record.
+- Overlap across enterprise software, data engineering, and biomedicine.
 
 CORE FOCUS
-LLMs, RAG systems, software development, document intelligence, generative AI, biomedical machine learning.
+LLMs, RAG systems, agentic AI, document intelligence, generative AI, software development,
+biomedical machine learning.
 
 TECHNICAL SKILLS
 Languages: Python, SQL, Bash, LabVIEW
-Frameworks/Libraries: FastAPI, Flask, PyTorch, PySpark, LangChain, LlamaIndex, Transformers
-AWS: Lambda, S3, ECS, EC2, Step Functions, Bedrock
-Azure: Data Factory, Synapse, Azure DevOps, Azure Functions, Azure Search, Azure OpenAI, Data Lake, Databricks
-Databases/Vector Stores: DynamoDB, PostgreSQL, Redis, Pinecone, Milvus, PgVector
-Tools: Docker, Git, Grafana, Jenkins
+ML & Generative AI: PyTorch, Transformers, LangChain, LlamaIndex, RAG, AI Agents, Fine-Tuning,
+  Embeddings, XGBoost, Computer Vision
+Backend & Services: FastAPI, Flask, REST APIs, Docker, PySpark, RabbitMQ
+AWS: Lambda, S3, ECS, EC2, Step Functions, Bedrock, SAM
+Azure: AI Foundry, Azure OpenAI, AI Search, Data Factory, Synapse, Microsoft Fabric, Functions,
+  Data Lake, Databricks, DevOps
+Data & Vector Stores: PostgreSQL, DynamoDB, Redis, Qdrant, Pinecone, Milvus, PgVector
+Ops & Tooling: Git, Jenkins, Grafana, KubeFlow, Power BI
+Research Methods: Biostatistics, SPSS, ECG analysis, CPET analysis, in silico trials
 
 PROFESSIONAL SUMMARY
-ML Engineer, Data Scientist, and PhD Researcher with a strong background in higher education and published research. Specializes in machine learning, AI, generative AI, and software development, with expertise bridging data science and biomedicine. Analytical thinker with a pragmatic problem-solving approach and strong communication skills.
+AI leader and hands-on engineer. Runs an AI and Data practice as Head of AI and still builds the
+systems personally. Ten years of applied machine learning across enterprise delivery and
+biomedical research, with 14 peer-reviewed works in computational cardiology and exercise
+physiology. Analytical, pragmatic, and comfortable owning work from presales through to
+production.
 
 EXPERIENCE
-Oct 2024 - Present | Senior Machine Learning Engineer & Software Engineer | 404 Solutions
-- Designed and operated multi-tenant AI systems for enterprise clients.
-- Delivered document intelligence solutions for automated extraction, classification, and summarization.
-- Built scalable AWS workflows using S3, Step Functions, Bedrock, and APIs for multiple organizations.
-- Deployed, monitored, and maintained production systems across distributed client environments.
-- Stack: Python, AI Agents, FastAPI, RAG.
+Apr 2025 - Present | Head of AI | ExpertGroup (Belgrade, Serbia)
+- Lead the AI and Data team, reporting to the CEO — organisation, people management, hiring,
+  and mentoring.
+- Own AI initiatives end to end: originating projects, presales, architecture, and engineering
+  standards.
+- Delivered RAG chatbots over live document collections — multilingual retrieval with answer
+  lineage and real-time index updates.
+- Built gradient-boosted time series models for supply chain and sales forecasting.
+- Architecting crowd movement prediction and venue analytics for large-scale events.
+- Stays hands-on: demo pitches, proofs of concept, and MVPs built alongside the team.
+- Stack: Python, FastAPI, LangChain, Qdrant, RabbitMQ, Azure AI Foundry, Microsoft Fabric,
+  Azure DevOps, Docker, XGBoost, Computer Vision.
 
-Oct 2023 - Sept 2024 | Senior Data Scientist & Software Engineer in AI, R&D | Publicis Sapient
+Oct 2024 - Present | Independent AI & ML Consultant | 404 Solutions (own B2B consultancy)
+- Delivers AI and software work for delivery partners in Europe and the US, serving their
+  enterprise clients.
+- Designed and operated multi-tenant AI systems for enterprise clients.
+- Delivered document intelligence for automated extraction, classification, and summarization.
+- Built agentic graph RAG architectures for multi-document summarization and risk analysis.
+- Built scalable AWS workflows on S3, Step Functions, Bedrock, and APIs.
+- Deployed, monitored, and maintained production systems across distributed client environments.
+- Stack: Python, FastAPI, RAG, AI Agents, LangChain, AWS Bedrock, Lambda, Step Functions, S3,
+  ECS, DynamoDB.
+
+Oct 2023 - Sep 2024 | Senior Data Scientist & Software Engineer in AI, R&D | Publicis Sapient
 - Led development from proof of concept to production-grade systems.
 - Built enterprise RAG systems with retrieval optimization.
+- Delivered an enterprise AI code copilot grounded in internal code and documentation.
 - Delivered client-facing solutions and technical propositions.
-- Stack: Python, FastAPI, LangChain, Transformers, PyTorch, Docker, Azure, KubeFlow, Redis, Milvus, AI Agents, Azure OpenAI.
+- Stack: Python, FastAPI, LangChain, Transformers, PyTorch, Docker, Azure, KubeFlow, Redis,
+  Milvus, Azure OpenAI.
 
-May 2022 - Oct 2023 | Data Scientist & Developer -> Senior Specialist | Valcon Netherlands
+May 2022 - Oct 2023 | Data Scientist & Developer -> Senior Specialist | Valcon (Netherlands)
 - Led and mentored a team of 6 engineers.
 - Owned design of document processing microservices.
 - Built data extraction and document classification services from scratch.
-- Stack: Python, Azure DevOps, Azure Data Factory, Synapse, Data Lake, Docker.
+- Stack: Python, Azure DevOps, Azure Data Factory, Synapse, Data Lake, PyTorch, Flask, Docker.
 
 Oct 2021 - Apr 2022 | Data Scientist | Optimal Systems GmbH
-- Performed model evaluation and hyperparameter tuning for ML classification.
-- Produced data-driven insights and testing/validation for ML systems.
-- Stack: Python, Docker, Machine Learning, Azure.
+- Model evaluation and hyperparameter tuning for ML classification.
+- Built an Azure extraction and transformation platform feeding self-service Power BI reporting.
+- Stack: Python, Azure Data Factory, Synapse, Data Lake, Power BI, Docker.
 
 Mar 2020 - Mar 2022 | Researcher | BioIRC - Bioengineering R&D Center
 - Built components for the SILICOFCM EU Horizon 2020 computational platform.
-- Worked on ECG, CPET, and biomedical data processing.
-- Contributed to peer-reviewed publications.
-- Stack: Python, Statistical Analysis, SPSS, ECG, CPET, Biomedicine.
+- ECG, CPET, and biomedical data processing; contributed to peer-reviewed publications.
+- Stack: Python, PyTorch, Statistical Analysis, SPSS, ECG, CPET.
 
 Oct 2018 - Mar 2022 | PhD Researcher | University of Belgrade
 - Developed research methodology and statistical frameworks.
-- Applied machine learning to biomedical datasets.
-- Published papers internationally.
+- Applied machine learning to biomedical datasets; published internationally.
 - Stack: Python, PyTorch, SPSS, Machine Learning, Biostatistics.
 
-Oct 2014 - July 2018 | Sports Scientist | Sport and Recreation Center Obliqus
+Oct 2014 - Jul 2018 | Sports Scientist | Sport and Recreation Center Obliqus
 - Built algorithms for signal processing and data collection.
-- Performed functional testing and performance analysis for athletes.
+- Functional testing and performance analysis for athletes.
 - Stack: Python, SPSS, LabVIEW, Data Analysis.
 
-KEY PROJECTS
-1. AI-Powered Document Summarizer | Generative AI
-- Built a document summarization pipeline using RAG, LLMs, and NLP for unstructured corpora.
-- Focused on chunking, retrieval tuning, prompt templates, and evaluation loops.
-- Impact: faster review cycles, less manual synthesis, more consistent summaries.
-- Stack: Python, AWS, Snowflake, RAG, Docker, S3, Step Functions, AWS SAM, LangChain, LlamaIndex.
+DELIVERY PARTNERS (through 404 Solutions)
+- Provectus Inc (United States) — document intelligence: summarization and point-of-interest
+  extraction, multi-document risk analysis, and the ingestion pipelines underneath both.
+  Delivered for a specialty insurance client.
+- WiserTech (Bulgaria) — machine learning engineering for a UAE-based sovereign AI organisation:
+  speech-to-text pipelines, orchestrated agent graphs over RAG retrieval, cross-source
+  summarization.
+- Q Agency (Croatia) — a complete content platform (web search and deep-research agents,
+  long-form generation, publishing to connected channels), plus a reverse-engineered backend
+  rebuild for one of their enterprise clients.
+Note: 404 Solutions is Stefan's own consultancy. The partners above are the organisations he
+delivers through; their end clients are generally not named publicly.
 
-2. AI-Code Copilot | Generative AI
-- Built an enterprise AI copilot for internal infrastructure and knowledge bases.
-- Designed the RAG architecture, data pipelines, and model tuning for context-aware assistance.
-- Focused on secure retrieval across internal code and docs, with access controls and response grounding.
-- Stack: Python, Redis, Snowflake, RAG, AI Agents, LangChain, Azure OpenAI, Azure DevOps, Grafana, Fine-Tuning, KubeFlow, Docker, PostgreSQL, Milvus.
+PROJECTS (18 total; full write-ups at manse404.github.io/webpage/projects)
+ExpertGroup
+1. Crowd Analytics & Movement Prediction (Computer Vision) — crowd movement prediction for a
+   large-scale public event, forecasting where density is about to build so visitors can be
+   routed around congestion. Role: architect and technical lead.
+2. Document Chatbot with Live Lineage (Generative AI) — high-precision multilingual chatbot over
+   a living document set; every answer traceable to its source passage, index updated in real
+   time, precision favoured over recall.
+3. Multilingual Document QA Chatbot (Generative AI) — retrieval-augmented assistant answering in
+   the user's own language, deliberately contained in scope, delivered end to end by the team.
+4. Supply Chain & Sales Forecasting (Machine Learning) — gradient-boosted demand forecasting for
+   wholesale distribution on a monthly planning cycle.
 
-3. RiskFocus (RiskSummariser Enhancement) | Generative AI
-- Built a RiskFocus feature to improve risk assessment workflows.
-- Added multi-document data lineage, risk factor management by line of business, and knowledge-base-backed prompts.
-- Added Q&A workflows to support guided decision-making.
-- Stack: Python, LangChain, AWS Lambda, ECS, S3, AWS Bedrock, Step Functions, RAG.
+404 Solutions (with partners)
+5. Agentic AI Insights Platform (Agentic AI, with WiserTech) — orchestration graphs coordinating
+   multiple agents across summarization, suggestion, and meeting preparation.
+6. Marketing Content Manager (Agentic AI, with Q Agency) — web search and deep-research agents
+   feeding long-form generation and blog drafting, publishing to connected channels.
+7. Reverse Engineering & Backend Delivery (Software Engineering, with Q Agency) — recovered what
+   an undocumented production system did, specified it, and rebuilt the backend against it.
+8. AI-Powered Document Summarizer (Generative AI, with Provectus) — summarization and
+   point-of-interest extraction over large multi-document sets on an agentic graph RAG
+   architecture.
+9. RiskFocus - Risk Summariser (Generative AI, with Provectus) — multi-document risk extraction
+   surfacing where documents reinforce, qualify, or contradict each other, with source lineage.
+10. Large-Scale Document ETL Pipelines (Cloud / AWS, with Provectus) — serverless ingestion and
+    transformation at scale; the substrate the summarization and risk systems run on.
 
-4. Document Chatbot | ML/AI
-- Built an enterprise chatbot with optimized ingestion pipelines and document retrieval.
-- Evaluated and fine-tuned LLMs to improve answer accuracy and consistency.
-- Impact: faster access to trusted answers and lower support burden.
-- Stack: Python, FastAPI, Azure Search, Azure Functions, Docker, Azure OpenAI, Azure Pipelines, Data Lake, Snowflake, RAG.
+Publicis Sapient
+11. Slingshot - AI Code Copilot (Generative AI) — enterprise copilot from proof of concept
+    through MVP to delivered product, with access-aware retrieval over internal code and docs.
+12. RAG Document Chatbot (Generative AI) — enterprise RAG chatbot evaluated for accuracy and
+    consistency rather than fluency.
+13. Auto Market Data Platform (Data Engineering) — multi-source ingestion combining production
+    databases and web-scraped market data into one normalized analytical layer.
 
-5. Auto Market Data Platform | Data Engineering
-- Built a multi-source ingestion pipeline for auto market analytics.
-- Combined production database inputs with web-scraped data in a centralized data lake.
-- Processed and normalized data with Databricks and Python for downstream analytics.
-- Stack: Python, Azure, Docker, Data Lake, Snowflake, Databricks, Azure Data Factory, FastAPI.
+Valcon Netherlands
+14. Document Data Extractor Service (Software Engineering) — extraction and classification built
+    from scratch, delivered to production by a team of six he led.
+15. Voice-Enabled Support Chatbot (Conversational AI) — telephone-based voice support covering
+    the full conversational loop.
+16. Document Classification Service (Software Engineering) — containerized Azure microservices
+    for extraction, categorization, and structured storage.
 
-6. Large-Scale Document ETL Pipelines | Cloud / AWS
-- Built large-scale document ingestion and transformation pipelines on AWS.
-- Designed serverless workflows for load, parse, transform, and S3 delivery.
-- Impact: higher throughput, better reliability, lower operational overhead.
-- Stack: Python, AWS Lambda, Step Functions, DynamoDB, S3, Snowflake, AWS SAM, ECS, EC2.
-
-7. Document Data Extractor Service | Software Engineering
-- Built data extraction and document classification services from scratch.
-- Created deep learning algorithms for unstructured text.
-- Led a team of 6 engineers and delivered production-ready services.
-- Stack: Python, Azure Data Factory, Synapse, Snowflake, Docker, Flask, PyTorch, Embeddings, ETL, Data Lake.
-
-8. SILICOFCM - EU Horizon 2020 | Research
-- Worked on a computational platform for in silico clinical trials of familial cardiomyopathies.
-- Contributed ECG and CPET analysis, statistical modeling, and patient-specific 3D heart model work.
-- Supported research outputs, clinical insights, and personalized medicine use cases.
-- Reference: https://silicofcm.eu/
-- Stack: Python, PyTorch, Data Analysis, Biostatistics, ECG, CPET, In Silico Trials.
-
-9. Voice-Enabled Support Chatbot | Conversational AI
-- Built a voice support system for telephone-based customer interactions.
-- Covered speech-to-text, intent recognition, entity extraction, dialogue flow, and text-to-speech.
-- Designed for high availability and telephony integration.
-- Stack: Python, Docker, Azure LUIS, Azure Speech Services, Azure Bot Service, Telephony.
-
-10. Data Extraction Service | Data Engineering
-- Built an Azure-based extraction and transformation platform for analytics workflows.
-- Orchestrated ETL from raw ingestion through classification, embedding generation, and reporting outputs.
-- Integrated with Power BI for dashboards and self-service analytics.
-- Stack: Python, FastAPI, Azure Data Factory, Synapse, Data Lake, Power BI, ETL, Embeddings.
-
-11. Document Classification Service | Software Engineering
-- Built an end-to-end document processing service for extraction, classification, and structured storage.
-- Used containerized microservices on Azure for scalable intake and automated categorization.
-- Impact: lower manual tagging effort and better labeling consistency.
-- Stack: Python, Docker, Azure, Flask, REST API, ML Classification.
+Earlier
+17. Data Extraction Service (Data Engineering, Optimal Systems GmbH) — Azure extraction and
+    transformation platform feeding self-service Power BI reporting.
+18. SILICOFCM - EU Horizon 2020 (Research, BioIRC) — computational platform for in silico
+    clinical trials of familial cardiomyopathies; ECG and CPET analysis, statistical modelling,
+    patient-specific 3D heart models. Reference: https://silicofcm.eu/
 
 RESEARCH PROFILE
-Themes: machine learning for biomedical datasets, exercise physiology, cardiovascular research, ECG and CPET analysis, computational cardiology.
-Publication profile: 10+ publications, 100+ citations.
+Themes: machine learning for biomedical datasets, exercise physiology, cardiovascular research,
+ECG and CPET analysis, computational cardiology.
+Metrics (Google Scholar, checked 2026-08-13): 14 works, 138 citations, h-index 5, i10-index 5.
+3 works as first author.
 Selected publications:
-- A Machine Learning Approach to Gene Expression in Hypertrophic Cardiomyopathy, Pharmaceuticals (MDPI), 2024.
-- Ventilatory Efficiency Parameters Outperform Peak VO2 in Monitoring Therapy Effects in HCM, European Heart Journal, 2024.
-- Defining the Importance of Stress Reduction in Managing Cardiovascular Disease - The Role of Exercise, Progress in Cardiovascular Diseases, 2022.
-- Physical activity and exercise as an essential medical strategy for the COVID-19 pandemic and beyond, Experimental Biology and Medicine, 2021.
+- Sacubitril/valsartan for the treatment of non-obstructive hypertrophic cardiomyopathy: an
+  open-label randomized controlled trial (SILICOFCM). European Journal of Heart Failure, 2024.
+  Co-author. 26 citations.
+- The ventilatory efficiency parameters outperform peak oxygen consumption in monitoring the
+  therapy effects in patients with hypertrophic cardiomyopathy. Progress in Cardiovascular
+  Diseases, 2024. First author.
+- A Machine Learning Approach to Gene Expression in Hypertrophic Cardiomyopathy.
+  Pharmaceuticals (MDPI), 2024. Co-author.
+- Defining the importance of stress reduction in managing cardiovascular disease - the role of
+  exercise. Progress in Cardiovascular Diseases, 2022. Co-author. 72 citations.
+- Physical activity and exercise as an essential medical strategy for the COVID-19 pandemic and
+  beyond. Experimental Biology and Medicine, 2021. First author.
+- Reduced cardiac workload and enhanced oxygen extraction during maximal exercise in
+  recreational endurance runners. Open Heart, 2026. Co-author.
 
 EDUCATION
-- PhD Candidate, Sport Science, University of Belgrade, 2018 - Present. Focus: machine learning applications in exercise physiology and biomedical signal processing.
+- PhD Candidate, Sport Science, University of Belgrade, 2018 - Present. Focus: machine learning
+  applications in exercise physiology and biomedical signal processing.
 - Master's Degree, Sports Medicine, University of Novi Sad.
 - Bachelor's Degree, Sport Science, University of Belgrade.
 
@@ -178,6 +222,11 @@ LANGUAGES
 - English (Fluent)
 
 USAGE NOTES
-Use this file as context for professional bios, portfolio copy, cover letters, speaker intros, application materials, networking messages, or project summaries.
-Emphasize: production-ready AI systems, enterprise document intelligence, RAG/LLM delivery, cloud-based ML and data engineering, research-backed engineering, and AI at the intersection of software and biomedicine.
-Do not invent employers, titles, certifications, dates, awards, patents, clinical qualifications, or degrees not listed here. If a detail is missing, ask before asserting it.
+Use this file as context for professional bios, portfolio copy, cover letters, speaker intros,
+application materials, networking messages, or project summaries.
+Emphasize: AI leadership that stayed hands-on, production-ready AI systems, enterprise document
+intelligence, RAG and agentic delivery, cloud-based ML and data engineering, research-backed
+engineering, and AI at the intersection of software and biomedicine.
+Do not invent employers, titles, certifications, dates, awards, patents, clinical
+qualifications, or degrees not listed here. If a detail is missing, ask before asserting it.
+End-client names behind delivery partners are confidential unless already public.
